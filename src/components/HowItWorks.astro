@@ -134,4 +134,9 @@
     .conn .pkt { top: 0; left: 50%; transform: translateX(-50%); animation-name: vtravel; animation-duration: 1.9s; }
     .conn .pkt:nth-child(2), .conn .pkt:nth-child(3) { display: none; }
   }
+
+  /* desktop/landscape only: frosted-glass stage cards */
+  @media (min-width: 861px) {
+    .stage { background: linear-gradient(180deg, rgba(18,24,40,.5), rgba(12,17,30,.58)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  }
 </style>

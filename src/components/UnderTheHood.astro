@@ -50,4 +50,9 @@
 
   @media (max-width: 979px) { .egrid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .egrid { grid-template-columns: 1fr; } }
+
+  /* desktop/landscape only: frosted-glass cards */
+  @media (min-width: 861px) {
+    .ecard { background: rgba(16,22,38,.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  }
 </style>

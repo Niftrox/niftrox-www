@@ -62,4 +62,9 @@
     .vconn { display: block; align-self: center; width: 2px; height: 22px; position: relative; background: linear-gradient(180deg, var(--border), #2f3e5c, var(--border)); }
     .vconn .vp { position: absolute; left: 50%; top: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 7px var(--accent); transform: translateX(-50%); animation: vtravel 1.9s linear infinite; }
   }
+
+  /* desktop/landscape only: frosted-glass cards */
+  @media (min-width: 861px) {
+    .rcard { background: rgba(16,22,38,.4); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  }
 </style>

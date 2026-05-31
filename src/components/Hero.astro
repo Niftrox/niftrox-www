@@ -134,4 +134,9 @@
     .sc1-meta { line-height: 1.5; }
     .scrollcue { margin-top: 8px; }
   }
+
+  /* desktop/landscape only: frosted glass (mobile keeps the solid card for perf) */
+  @media (min-width: 861px) {
+    .scorecard { background: linear-gradient(180deg, rgba(17,23,38,.62), rgba(11,16,28,.7)); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  }
 </style>
