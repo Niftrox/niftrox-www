@@ -70,15 +70,19 @@ const ogImage = new URL('/og.png', site).href;
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (reduce || !('IntersectionObserver' in window)) return;
         const els = Array.from(document.querySelectorAll<HTMLElement>('.uc, .pipe, .deliver, .ecard, .rcard, .flow-head, .eh, .rh, .foot-in'));
-        for (const el of els) { el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity .35s ease-out, transform .35s ease-out'; }
+        for (const el of els) { el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; el.style.transition = 'opacity .5s ease-out, transform .55s cubic-bezier(.2,.7,.2,1)'; }
         const io = new IntersectionObserver((entries) => {
           for (const e of entries) {
             if (!e.isIntersecting) continue;
             const el = e.target as HTMLElement;
+            // small stagger when a group of cards reveals together
+            const sibs = el.parentElement ? Array.from(el.parentElement.children).filter((c) => (c as HTMLElement).style && (c as HTMLElement).style.opacity === '0') : [];
+            const idx = Math.max(0, sibs.indexOf(el));
+            el.style.transitionDelay = Math.min(idx * 0.07, 0.28) + 's';
             el.style.opacity = '1'; el.style.transform = 'none';
             io.unobserve(el);
           }
-        }, { rootMargin: '0px 0px 120px 0px', threshold: 0.01 });
+        }, { rootMargin: '0px 0px -12% 0px', threshold: 0 });
         for (const el of els) io.observe(el);
       })();
     </script>
