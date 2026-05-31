@@ -64,6 +64,26 @@ const ogImage = new URL('/og.png', site).href;
     </script>
 
     <script>
+      // Tuned scroll-reveal: short, GPU-only (transform/opacity), triggered early (rootMargin)
+      // so content animates in BEFORE it enters view and never feels absent.
+      (() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !('IntersectionObserver' in window)) return;
+        const els = Array.from(document.querySelectorAll<HTMLElement>('.uc, .pipe, .deliver, .ecard, .rcard, .flow-head, .eh, .rh, .foot-in'));
+        for (const el of els) { el.style.opacity = '0'; el.style.transform = 'translateY(16px)'; el.style.transition = 'opacity .35s ease-out, transform .35s ease-out'; }
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const el = e.target as HTMLElement;
+            el.style.opacity = '1'; el.style.transform = 'none';
+            io.unobserve(el);
+          }
+        }, { rootMargin: '0px 0px 120px 0px', threshold: 0.01 });
+        for (const el of els) io.observe(el);
+      })();
+    </script>
+
+    <script>
       // Single ambient correlation-network backdrop for the whole page.
       // Capped DPR + ~30fps + node count scaled to viewport = smooth on mobile.
       (() => {

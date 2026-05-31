@@ -80,4 +80,10 @@
     .dchip .meta { display: none; }
     .dchip.soon .meta.soonl { display: block; }
   }
+
+  /* desktop/landscape only: frosted-glass chips + hub */
+  @media (min-width: 861px) {
+    .dchip { background: rgba(16,22,38,.46); backdrop-filter: blur(9px); -webkit-backdrop-filter: blur(9px); }
+    .hub { background: linear-gradient(180deg, rgba(18,24,40,.6), rgba(12,17,30,.66)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  }
 </style>
