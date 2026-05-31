@@ -16,7 +16,10 @@
 
   <div class="fg">
     <nav class="nav" aria-label="Primary">
-      <div class="brand">niftrox<span>/</span>changeops</div>
+      <a class="brand" href="/" aria-label="Niftrox ChangeOps — home">
+        <img class="logo-mark" src="/logo.png" width="30" height="30" alt="" />
+        <span class="wordmark">niftrox<span>/</span>changeops</span>
+      </a>
       <span class="tag"><span class="blip"></span>LAUNCHING 2027</span>
     </nav>
 
@@ -125,8 +128,9 @@
     padding: 22px var(--pad) 40px;
   }
   .nav { display: flex; align-items: center; justify-content: space-between; }
-  .brand { font-weight: 800; font-size: 15px; letter-spacing: -.01em; }
-  .brand span { color: var(--accent); }
+  .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 15px; letter-spacing: -.01em; color: var(--text); }
+  .logo-mark { width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border-2); background: #04060c; object-fit: cover; flex-shrink: 0; }
+  .wordmark span { color: var(--accent); }
   .tag {
     font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--dim);
     border: 1px solid var(--border-2); padding: 5px 11px; border-radius: 999px;
