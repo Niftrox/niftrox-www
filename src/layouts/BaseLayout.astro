@@ -29,7 +29,8 @@ const ogImage = new URL('/og.png', site).href;
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="theme-color" content="#070b14" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <!-- OpenGraph -->
     <meta property="og:type" content="website" />
@@ -46,6 +47,7 @@ const ogImage = new URL('/og.png', site).href;
     <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
+    <canvas id="bgfx" aria-hidden="true"></canvas>
     <slot />
 
     <script>
@@ -77,6 +79,65 @@ const ogImage = new URL('/og.png', site).href;
         }, { threshold: 0.16 });
         for (const el of els) io.observe(el);
       }
+    </script>
+
+    <script>
+      // Page-wide ambient correlation network (behind the lower sections).
+      (() => {
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const canvas = document.getElementById('bgfx');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let W = 0, H = 0, nodes: { x: number; y: number; vx: number; vy: number; r: number; hue: string }[] = [];
+        const pulses: { x: number; y: number; r: number; max: number }[] = [];
+        let raf = 0, running = false, ptimer = 0;
+
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          W = window.innerWidth; H = window.innerHeight;
+          canvas.width = W * dpr; canvas.height = H * dpr;
+          canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function seed() {
+          const n = Math.max(22, Math.min(46, Math.round((W * H) / 32000)));
+          nodes = Array.from({ length: n }, () => ({
+            x: Math.random() * W, y: Math.random() * H,
+            vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18,
+            r: Math.random() * 1.4 + .7,
+            hue: Math.random() > .72 ? '122,162,255' : '94,234,212',
+          }));
+        }
+        function spawn() { const p = nodes[Math.floor(Math.random() * nodes.length)]; if (p) pulses.push({ x: p.x, y: p.y, r: 8, max: 260 }); }
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          for (const p of nodes) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
+          for (let k = pulses.length - 1; k >= 0; k--) {
+            const pl = pulses[k]; pl.r += 2.2; const a = Math.max(0, 1 - pl.r / pl.max);
+            ctx.strokeStyle = `rgba(53,224,200,${a * .22})`; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.arc(pl.x, pl.y, pl.r, 0, Math.PI * 2); ctx.stroke();
+            if (pl.r > pl.max) pulses.splice(k, 1);
+          }
+          for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j]; const d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < 150) {
+              let o = (1 - d / 150) * .2;
+              for (const pl of pulses) { const band = Math.abs(Math.hypot(a.x - pl.x, a.y - pl.y) - pl.r); if (band < 24) o = Math.min(.55, o + .34 * (1 - band / 24)); }
+              ctx.strokeStyle = `rgba(94,234,212,${o})`; ctx.lineWidth = .6;
+              ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+          for (const p of nodes) { ctx.fillStyle = `rgba(${p.hue},.62)`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); }
+          raf = requestAnimationFrame(draw);
+        }
+        function start() { if (running || reduce) return; running = true; draw(); ptimer = window.setInterval(spawn, 2400); }
+        function stop() { if (!running) return; running = false; cancelAnimationFrame(raf); clearInterval(ptimer); }
+
+        resize(); seed();
+        if (reduce) { draw(); cancelAnimationFrame(raf); } else { start(); }
+        document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+        let rt: number; window.addEventListener('resize', () => { clearTimeout(rt); rt = window.setTimeout(() => { resize(); seed(); }, 200); });
+      })();
     </script>
   </body>
 </html>
