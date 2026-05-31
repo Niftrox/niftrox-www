@@ -1,14 +1,13 @@
 ---
 // Self-hosted fonts (no Google CDN — perf + EU/GDPR friendly)
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/inter/800.css';
-import '@fontsource/inter/900.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/500.css';
-import '@fontsource/jetbrains-mono/600.css';
+// Only the weights actually used, latin subset only (English site).
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-700.css';
+import '@fontsource/inter/latin-800.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
+import '@fontsource/jetbrains-mono/latin-600.css';
+import '@fontsource/jetbrains-mono/latin-700.css';
 import '../styles/global.css';
 
 const title = 'ChangeOps — find the change that broke production';
@@ -97,17 +96,17 @@ const ogImage = new URL('/og.png', site).href;
         const ctx = canvas.getContext('2d');
         let W = 0, H = 0, t = 0, nodes: { x: number; y: number; vx: number; vy: number; r: number; hue: string; tw: number; ts: number }[] = [];
         const pulses: { x: number; y: number; r: number; max: number }[] = [];
-        let raf = 0, running = false, ptimer = 0;
+        let raf = 0, running = false, ptimer = 0, lastDraw = 0, heroCovering = false;
 
         function resize() {
-          const dpr = window.devicePixelRatio || 1;
+          const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
           W = window.innerWidth; H = window.innerHeight;
           canvas.width = W * dpr; canvas.height = H * dpr;
           canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
           ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         }
         function seed() {
-          const n = Math.max(30, Math.min(64, Math.round((W * H) / 22000)));
+          const n = Math.max(22, Math.min(40, Math.round((W * H) / 34000)));
           nodes = Array.from({ length: n }, () => ({
             x: Math.random() * W, y: Math.random() * H,
             vx: (Math.random() - .5) * .16, vy: (Math.random() - .5) * .16,
@@ -119,7 +118,11 @@ const ogImage = new URL('/og.png', site).href;
         }
         function spawn() { const p = nodes[Math.floor(Math.random() * nodes.length)]; if (p) pulses.push({ x: p.x, y: p.y, r: 8, max: 300 }); }
         function draw() {
-          t += 0.016;
+          raf = requestAnimationFrame(draw);
+          const now = performance.now();
+          if (now - lastDraw < 32) return;   // ~30fps — plenty for an ambient backdrop
+          lastDraw = now;
+          t += 0.03;
           ctx.clearRect(0, 0, W, H);
           for (const p of nodes) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
           for (let k = pulses.length - 1; k >= 0; k--) {
@@ -143,14 +146,26 @@ const ogImage = new URL('/og.png', site).href;
             ctx.fillStyle = `rgba(${p.hue},${0.35 + 0.6 * a})`;
             ctx.beginPath(); ctx.arc(p.x, p.y, p.r + a * 0.6, 0, Math.PI * 2); ctx.fill();
           }
-          raf = requestAnimationFrame(draw);
         }
-        function start() { if (running || reduce) return; running = true; draw(); ptimer = window.setInterval(spawn, 2400); }
+        function start() { if (running || reduce || heroCovering || document.hidden) return; running = true; lastDraw = 0; draw(); ptimer = window.setInterval(spawn, 2600); }
         function stop() { if (!running) return; running = false; cancelAnimationFrame(raf); clearInterval(ptimer); }
 
         resize(); seed();
-        if (reduce) { draw(); cancelAnimationFrame(raf); } else { start(); }
-        document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+        if (reduce) {
+          draw(); cancelAnimationFrame(raf);
+        } else {
+          // Only animate when the hero is NOT covering the viewport (the hero has its own canvas),
+          // and never animate a backdrop that's hidden behind the hero or in a background tab.
+          const heroEl = document.getElementById('hero-stage');
+          if (heroEl && 'IntersectionObserver' in window) {
+            new IntersectionObserver((es) => {
+              const e = es[0];
+              heroCovering = e.isIntersecting && e.intersectionRatio > 0.55;
+              heroCovering ? stop() : start();
+            }, { threshold: [0, 0.55, 1] }).observe(heroEl);
+          } else { start(); }
+          document.addEventListener('visibilitychange', () => { document.hidden ? stop() : start(); });
+        }
         let rt: number; window.addEventListener('resize', () => { clearTimeout(rt); rt = window.setTimeout(() => { resize(); seed(); }, 200); });
       })();
     </script>
