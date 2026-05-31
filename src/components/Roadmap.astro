@@ -1,0 +1,71 @@
+---
+// Roadmap — NOW / NEXT / LATER. Honest trajectory: Azure -> AWS/GCP -> AI on the deterministic core.
+---
+
+<section class="roadmap" aria-label="Roadmap">
+  <div class="amb-r1" aria-hidden="true"></div>
+  <div class="amb-r2" aria-hidden="true"></div>
+
+  <div class="rh shell">
+    <p class="eyebrow">Where we're going</p>
+    <h2>Azure-first by design — not Azure-only forever</h2>
+  </div>
+
+  <div class="rline shell">
+    <div class="rconn" aria-hidden="true"><span class="rp"></span><span class="rp" style="animation-delay:2s"></span></div>
+
+    <div class="rcard now">
+      <span class="when">NOW · 2027</span>
+      <h3>Azure, done deeply</h3>
+      <p>Activity Log, Resource Graph &amp; AKS audit. Ranked evidence, honest confidence, export to Slack / Teams / Jira.</p>
+    </div>
+
+    <div class="vconn" aria-hidden="true"><span class="vp"></span></div>
+
+    <div class="rcard next">
+      <span class="when">NEXT</span>
+      <h3>AWS &amp; GCP</h3>
+      <p>The evidence model is cloud-agnostic by design. Same ranked story, across your whole estate.</p>
+    </div>
+
+    <div class="vconn" aria-hidden="true"><span class="vp" style="animation-delay:.7s"></span></div>
+
+    <div class="rcard later">
+      <span class="when">LATER</span>
+      <h3>AI on the deterministic core</h3>
+      <p>AI reads the <em>trusted</em> evidence pack to summarize and suggest next checks — never replacing the engine.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .roadmap { position: relative; overflow: hidden; background: var(--bg-3); border-top: 1px solid #161d2e; padding: 40px var(--pad); }
+  .amb-r1 { position: absolute; width: 46%; height: 160%; right: -10%; top: -30%; border-radius: 50%; filter: blur(85px); background: radial-gradient(circle, rgba(56,128,255,.18), transparent 60%); z-index: 0; opacity: .6; animation: ambdrift2 21s ease-in-out infinite alternate; pointer-events: none; }
+  .amb-r2 { position: absolute; width: 42%; height: 150%; left: -10%; bottom: -35%; border-radius: 50%; filter: blur(85px); background: radial-gradient(circle, rgba(53,224,200,.16), transparent 60%); z-index: 0; opacity: .6; animation: ambdrift1 25s ease-in-out infinite alternate; pointer-events: none; }
+
+  .rh { position: relative; z-index: 1; text-align: center; margin-bottom: 26px; }
+  .rh h2 { font-size: clamp(21px, 2.6vw, 24px); font-weight: 800; letter-spacing: -.02em; margin-top: 8px; line-height: 1.2; }
+
+  .rline { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+  .rconn { position: absolute; top: 18px; left: 17%; right: 17%; height: 2px; background: linear-gradient(90deg, rgba(53,224,200,.5), rgba(120,138,170,.2)); z-index: 0; }
+  .rconn .rp { position: absolute; top: 50%; left: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); transform: translateY(-50%); animation: travel 4s linear infinite; }
+
+  .rcard { position: relative; z-index: 1; border: 1px solid var(--border); border-radius: 14px; padding: 16px; background: var(--panel); transition: border-color .2s, transform .2s, box-shadow .2s; }
+  .rcard:hover { transform: translateY(-3px); border-color: #35506a; box-shadow: 0 18px 40px -24px rgba(53,224,200,.4); }
+  .when { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; padding: 3px 9px; border-radius: 999px; display: inline-block; }
+  .rcard.now .when { background: rgba(53,224,200,.14); color: var(--accent); border: 1px solid rgba(53,224,200,.4); }
+  .rcard.next .when, .rcard.later .when { background: rgba(120,138,170,.1); color: var(--low); border: 1px solid #2a3650; }
+  .rcard h3 { font-size: 14px; font-weight: 700; margin: 10px 0 5px; }
+  .rcard.next h3, .rcard.later h3 { color: #c0c6d2; }
+  .rcard p { font-size: 12px; color: var(--muted-2); line-height: 1.5; }
+  .rcard.next, .rcard.later { opacity: .85; }
+
+  .vconn { display: none; }
+
+  @media (max-width: 767px) {
+    .rline { display: flex; flex-direction: column; align-items: stretch; }
+    .rconn { display: none; }
+    .vconn { display: block; align-self: center; width: 2px; height: 22px; position: relative; background: linear-gradient(180deg, var(--border), #2f3e5c, var(--border)); }
+    .vconn .vp { position: absolute; left: 50%; top: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 7px var(--accent); transform: translateX(-50%); animation: vtravel 1.9s linear infinite; }
+  }
+</style>

@@ -1,0 +1,55 @@
+---
+// Under the hood — engineering credibility (spec-accurate language for the ICP).
+---
+
+<section class="hood" aria-label="How the engine works">
+  <div class="amb-h" aria-hidden="true"></div>
+  <div class="shell">
+    <div class="eh">
+      <p class="eyebrow">Under the hood</p>
+      <h2>Built like an evidence engine — not a dashboard</h2>
+      <p class="lead">The substance that makes the ranking trustworthy.</p>
+    </div>
+    <div class="egrid">
+      <div class="ecard">
+        <div class="et">DETERMINISTIC</div>
+        <h3>Joined on correlationId</h3>
+        <p>Control-plane changes correlate deterministically, with a bounded time-window fallback. <code>HIGH</code> only when sources agree.</p>
+      </div>
+      <div class="ecard">
+        <div class="et">HONEST</div>
+        <h3>Calibrated confidence</h3>
+        <p>AKS audit evidence is heuristic and labelled <code>MED</code> — never dressed up as certainty. The engineer makes the call.</p>
+      </div>
+      <div class="ecard">
+        <div class="et">TRACEABLE</div>
+        <h3>Source-attributed</h3>
+        <p>Every ranked item keeps its raw Azure provenance, so you can drill straight back into the original evidence.</p>
+      </div>
+      <div class="ecard">
+        <div class="et">ISOLATED</div>
+        <h3>Tenant-safe &amp; read-only</h3>
+        <p>Workload-identity access, no stored credentials, per-tenant row-level isolation. We never store your raw logs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hood { position: relative; overflow: hidden; padding: 44px var(--pad) 50px; background: #0a0f1c; }
+  .amb-h { position: absolute; width: 46%; height: 130%; left: -8%; bottom: -30%; border-radius: 50%; filter: blur(85px); background: radial-gradient(circle, rgba(99,102,241,.14), transparent 60%); z-index: 0; animation: ambdrift2 24s ease-in-out infinite alternate; pointer-events: none; }
+  .shell { position: relative; z-index: 1; }
+  .eh { text-align: center; margin-bottom: 24px; }
+  .eh h2 { font-size: clamp(21px, 2.6vw, 25px); font-weight: 800; letter-spacing: -.02em; margin-top: 8px; line-height: 1.2; }
+  .eh .lead { color: var(--muted-2); font-size: 13px; margin-top: 7px; }
+  .egrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .ecard { border: 1px solid var(--border); border-radius: 14px; padding: 15px; background: var(--panel); transition: border-color .2s, transform .2s; }
+  .ecard:hover { border-color: #35506a; transform: translateY(-2px); }
+  .et { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--accent); }
+  .ecard h3 { font-size: 14px; font-weight: 700; margin: 9px 0 5px; }
+  .ecard p { font-size: 11.5px; color: var(--muted-2); line-height: 1.55; }
+  .ecard code { font-family: var(--mono); color: #9fb0c8; font-size: 10.5px; background: rgba(255,255,255,.05); padding: 1px 5px; border-radius: 4px; }
+
+  @media (max-width: 979px) { .egrid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .egrid { grid-template-columns: 1fr; } }
+</style>

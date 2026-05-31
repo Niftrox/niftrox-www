@@ -1,0 +1,28 @@
+---
+// Footer — brand line + compliance/security badges (launch-state, per founder).
+---
+
+<footer class="foot">
+  <div class="foot-in shell">
+    <div class="fb">niftrox<span>/</span>changeops · launching 2027</div>
+    <div class="badges">
+      <span class="fbadge"><b>SOC 2</b></span>
+      <span class="fbadge"><b>GDPR</b></span>
+      <span class="fbadge"><b>Read-only</b> access</span>
+      <span class="fbadge"><b>Workload Identity</b></span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot { position: relative; overflow: hidden; background: var(--bg); border-top: 1px solid #161d2e; padding: 24px var(--pad) 30px; }
+  .foot::before { content: ""; position: absolute; top: -1px; left: 0; height: 2px; width: 100%; background: linear-gradient(90deg, transparent, rgba(53,224,200,.7), rgba(99,102,241,.7), transparent); background-size: 200% 100%; animation: footline 6s linear infinite; }
+  .foot-in { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+  .fb { font-weight: 800; font-size: 14px; }
+  .fb span { color: var(--accent); }
+  .badges { display: flex; gap: 9px; flex-wrap: wrap; }
+  .fbadge { font-family: var(--mono); font-size: 10px; color: var(--dim); border: 1px solid #222c40; padding: 5px 10px; border-radius: 7px; }
+  .fbadge b { color: #9fb0c8; font-weight: 600; }
+
+  @media (max-width: 560px) { .foot-in { flex-direction: column; align-items: flex-start; } }
+</style>

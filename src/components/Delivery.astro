@@ -1,0 +1,84 @@
+---
+// Delivery fan-out — evidence pack delivered to the destinations from the MVP spec.
+// NOTE: brand marks are simple placeholders; official SVG logos are dropped in during the assets task.
+---
+
+<section class="delivery" aria-label="Where ChangeOps delivers evidence">
+  <div class="amb-d" aria-hidden="true"></div>
+
+  <div class="deliver shell">
+    <div class="hub">
+      <div class="ht">EXPORT &amp; NOTIFY</div>
+      <div class="hbig">Evidence pack</div>
+      <div class="hsub">PDF · JSON · CSV</div>
+      <span class="emit" aria-hidden="true"></span>
+    </div>
+
+    <div class="spine" aria-hidden="true"></div>
+    <div class="vspine" aria-hidden="true"><span class="vp"></span></div>
+
+    <div class="dests">
+      <div class="drow"><div class="branch" aria-hidden="true"><span class="p"></span></div>
+        <div class="dchip delivered"><span aria-hidden="true" class="mk slack">#</span><span class="nm">Slack</span><span class="meta">delivered <span class="ok">✓</span></span></div></div>
+      <div class="drow"><div class="branch" aria-hidden="true"><span class="p" style="animation-delay:.4s"></span></div>
+        <div class="dchip delivered" style="animation-delay:.4s"><span aria-hidden="true" class="mk teams">T</span><span class="nm">Microsoft Teams</span><span class="meta">delivered <span class="ok" style="animation-delay:.4s">✓</span></span></div></div>
+      <div class="drow"><div class="branch" aria-hidden="true"><span class="p" style="animation-delay:.8s"></span></div>
+        <div class="dchip delivered" style="animation-delay:.8s"><span aria-hidden="true" class="mk jira">J</span><span class="nm">Jira</span><span class="meta">ticket <span class="ok" style="animation-delay:.8s">✓</span></span></div></div>
+      <div class="drow"><div class="branch" aria-hidden="true"><span class="p" style="animation-delay:1.2s"></span></div>
+        <div class="dchip delivered" style="animation-delay:1.2s"><span aria-hidden="true" class="mk pdf">⤓</span><span class="nm">PDF / CSV export</span><span class="meta">saved <span class="ok" style="animation-delay:1.2s">✓</span></span></div></div>
+      <div class="drow"><div class="branch" aria-hidden="true"></div>
+        <div class="dchip soon"><span aria-hidden="true" class="mk inc">i</span><span class="nm">incident.io</span><span class="meta soonl">soon</span></div></div>
+      <div class="drow"><div class="branch" aria-hidden="true"></div>
+        <div class="dchip soon"><span aria-hidden="true" class="mk pd">!</span><span class="nm">PagerDuty</span><span class="meta soonl">soon</span></div></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .delivery { position: relative; overflow: hidden; padding: 8px var(--pad) 50px; background: #0a0f1c; }
+  .amb-d { position: absolute; width: 50%; height: 120%; right: -10%; top: -10%; border-radius: 50%; filter: blur(85px); background: radial-gradient(circle, rgba(53,224,200,.12), transparent 60%); z-index: 0; animation: ambdrift1 22s ease-in-out infinite alternate; pointer-events: none; }
+
+  .deliver { position: relative; z-index: 1; display: grid; grid-template-columns: auto 38px 1fr; align-items: center; }
+  .hub { background: linear-gradient(180deg, rgba(18,24,40,.8), rgba(12,17,30,.85)); border: 1px solid #2a3958; border-radius: 14px; padding: 13px 16px; box-shadow: 0 18px 50px -26px rgba(0,0,0,.9); position: relative; }
+  .ht { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--accent); }
+  .hbig { font-size: 17px; font-weight: 800; margin: 3px 0 2px; }
+  .hsub { font-size: 11px; color: var(--muted-2); }
+  .emit { position: absolute; right: -6px; top: 50%; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); transform: translateY(-50%); animation: emit 3s ease-in-out infinite; }
+
+  .spine { position: relative; height: 236px; }
+  .spine::before { content: ""; position: absolute; left: 50%; top: 8%; height: 84%; width: 2px; background: linear-gradient(180deg, transparent, #2f3e5c, transparent); transform: translateX(-50%); }
+  .vspine { display: none; }
+
+  .dests { display: flex; flex-direction: column; gap: 10px; }
+  .drow { display: flex; align-items: center; gap: 14px; }
+  .branch { position: relative; height: 2px; width: 44px; background: linear-gradient(90deg, #2f3e5c, var(--border)); flex-shrink: 0; }
+  .branch .p { position: absolute; top: 50%; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 7px var(--accent); transform: translateY(-50%); animation: branchtravel 3s ease-in infinite; }
+
+  .dchip { display: flex; align-items: center; gap: 10px; background: rgba(16,22,38,.7); border: 1px solid var(--border); border-radius: 11px; padding: 8px 14px; min-width: 218px; }
+  .dchip .mk { width: 22px; height: 22px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 11px; color: #fff; flex-shrink: 0; }
+  .dchip .nm { font-size: 13px; font-weight: 600; }
+  .dchip .meta { font-size: 10px; color: var(--dim); margin-left: auto; font-family: var(--mono); }
+  .dchip.delivered { animation: arrive 3s ease-in-out infinite; }
+  .dchip .ok { color: var(--accent); opacity: 0; animation: okp 3s ease-in-out infinite; }
+  .dchip.soon { opacity: .5; border-style: dashed; }
+  .soonl { color: #5b6678; }
+  .mk.slack { background: #4A154B; } .mk.teams { background: #5159b8; } .mk.jira { background: #1868db; }
+  .mk.pdf { background: #c5402f; } .mk.inc { background: #1c2333; border: 1px solid #3a455c; } .mk.pd { background: #0f3d22; border: 1px solid #2f6b45; color: #3fcf6f; }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 767px) {
+    .deliver { display: flex; flex-direction: column; align-items: center; }
+    .hub { text-align: center; width: 100%; max-width: 320px; }
+    .emit { display: none; }
+    .spine { display: none; }
+    .vspine { display: block; height: 24px; width: 2px; position: relative; background: linear-gradient(180deg, #2f3e5c, var(--border)); }
+    .vspine .vp { position: absolute; left: 50%; top: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 7px var(--accent); transform: translateX(-50%); animation: vtravel 1.6s linear infinite; }
+    .dests { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; width: 100%; }
+    .drow { min-width: 0; }
+    .branch { display: none; }
+    .dchip { min-width: 0; width: 100%; padding: 9px 11px; }
+    .dchip .nm { font-size: 12px; overflow-wrap: anywhere; }
+    .dchip .meta { display: none; }
+    .dchip.soon .meta.soonl { display: block; }
+  }
+</style>

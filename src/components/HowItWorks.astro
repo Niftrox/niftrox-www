@@ -1,0 +1,155 @@
+---
+// How it works — animated 4-stage pipeline. Horizontal on desktop, vertical on mobile.
+---
+
+<section class="how" aria-label="How ChangeOps works">
+  <div class="amb-flow" aria-hidden="true"></div>
+  <div class="gridbg" aria-hidden="true"></div>
+
+  <div class="flow-head shell">
+    <p class="eyebrow">How it works</p>
+    <h2>From a noisy cloud to a ranked answer</h2>
+    <p class="lead">Connect · collect · evaluate · rank — then delivered where you work.</p>
+  </div>
+
+  <div class="pipe shell">
+    <!-- 01 -->
+    <div class="stage">
+      <div class="viz" aria-hidden="true">
+        <div class="cloud">
+          <svg viewBox="0 0 80 50"><path d="M20 42 a14 14 0 0 1 2-27 a18 18 0 0 1 34 4 a12 12 0 0 1 2 23 z" fill="none" stroke="#35e0c8" stroke-width="2.5" /></svg>
+        </div>
+        <span class="ring"></span><span class="ring r2"></span>
+      </div>
+      <div class="stxt">
+        <div class="step">01 · CONNECT</div>
+        <h3>Connect your Azure</h3>
+        <p class="sp">Securely link subscriptions. Read-only.</p>
+        <div class="road"><b>Azure</b> now · AWS &amp; GCP next</div>
+      </div>
+    </div>
+
+    <div class="conn" aria-hidden="true"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+
+    <!-- 02 -->
+    <div class="stage">
+      <div class="viz" aria-hidden="true">
+        <div class="chips">
+          <span class="chip c1">Activity Log</span>
+          <span class="chip c2">Resource Graph</span>
+          <span class="chip c3">AKS audit</span>
+        </div>
+      </div>
+      <div class="stxt">
+        <div class="step">02 · COLLECT</div>
+        <h3>Collect change evidence</h3>
+        <p class="sp">Every change in the incident window.</p>
+        <div class="road"><b>Multi-source</b> · deterministic</div>
+      </div>
+    </div>
+
+    <div class="conn" aria-hidden="true"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+
+    <!-- 03 -->
+    <div class="stage">
+      <div class="viz" aria-hidden="true">
+        <div class="engine"><div class="orbit"></div><div class="orbit o2"></div><div class="core"></div></div>
+      </div>
+      <div class="stxt">
+        <div class="step">03 · CORRELATE</div>
+        <h3>Engines evaluate</h3>
+        <p class="sp">Correlate, score &amp; label confidence honestly.</p>
+        <div class="road"><b>+ AI summary</b> later</div>
+      </div>
+    </div>
+
+    <div class="conn" aria-hidden="true"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
+
+    <!-- 04 -->
+    <div class="stage">
+      <div class="viz viz-pack" aria-hidden="true">
+        <div class="pack">
+          <div class="ph"><span>EVIDENCE PACK</span><span>0–100</span></div>
+          <div class="prow"><span class="pn" style="color:var(--accent)">92</span><span class="pbar b-high"><i></i></span><span class="lab L-high">HIGH</span></div>
+          <div class="prow"><span class="pn" style="color:var(--med)">71</span><span class="pbar b-med"><i></i></span><span class="lab L-med">MED</span></div>
+          <div class="prow"><span class="pn" style="color:var(--dim)">54</span><span class="pbar b-low"><i></i></span></div>
+        </div>
+      </div>
+      <div class="stxt">
+        <div class="step">04 · RANK</div>
+        <h3>Ranked evidence pack</h3>
+        <p class="sp">Most likely change first — attributed.</p>
+        <div class="road"><b>Source-attributed</b> · exportable</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .how { position: relative; overflow: hidden; padding: 48px var(--pad) 40px; background: linear-gradient(180deg, #080d18 0%, #0a0f1c 100%); }
+  .amb-flow { position: absolute; width: 54%; height: 64%; left: -8%; top: -12%; border-radius: 50%; filter: blur(92px); background: radial-gradient(circle, rgba(99,102,241,.16), transparent 60%); z-index: 0; animation: ambdrift2 26s ease-in-out infinite alternate; }
+  .gridbg { position: absolute; inset: 0; z-index: 0; background-image: linear-gradient(rgba(120,160,200,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(120,160,200,.05) 1px, transparent 1px); background-size: 44px 44px; -webkit-mask-image: radial-gradient(900px 500px at 50% 30%, #000, transparent 80%); mask-image: radial-gradient(900px 500px at 50% 30%, #000, transparent 80%); }
+
+  .flow-head { position: relative; z-index: 1; text-align: center; margin-bottom: 36px; }
+  .flow-head h2 { font-size: clamp(23px, 3vw, 29px); font-weight: 800; letter-spacing: -.02em; margin-top: 10px; line-height: 1.15; }
+  .flow-head .lead { color: var(--muted-2); font-size: 14px; margin-top: 8px; }
+
+  .pipe { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 46px 1fr 46px 1fr 46px 1.1fr; align-items: stretch; }
+  .stage { background: linear-gradient(180deg, rgba(18,24,40,.7), rgba(12,17,30,.8)); border: 1px solid var(--border); border-radius: 16px; padding: 14px; display: flex; flex-direction: column; }
+  .viz { height: 96px; position: relative; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+  .step { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; color: var(--accent); }
+  .stage h3 { font-size: 13.5px; font-weight: 700; margin: 5px 0 3px; }
+  .sp { font-size: 11.5px; color: var(--muted-2); line-height: 1.45; }
+  .road { font-family: var(--mono); font-size: 9.5px; color: #5b6678; margin-top: 7px; border-top: 1px dashed #222c40; padding-top: 6px; }
+  .road b { color: var(--dim); }
+
+  .conn { align-self: center; position: relative; height: 2px; background: linear-gradient(90deg, var(--border), #2f3e5c, var(--border)); }
+  .conn .pkt { position: absolute; top: 50%; left: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); transform: translateY(-50%); animation: travel 2.1s linear infinite; }
+  .conn .pkt:nth-child(2) { animation-delay: .7s; }
+  .conn .pkt:nth-child(3) { animation-delay: 1.4s; }
+
+  /* stage 1 — cloud */
+  .cloud { width: 64px; height: 40px; position: relative; }
+  .cloud svg { width: 100%; height: 100%; filter: drop-shadow(0 0 10px rgba(53,224,200,.5)); }
+  .ring { position: absolute; top: 50%; left: 50%; width: 30px; height: 30px; border: 1.5px solid rgba(53,224,200,.55); border-radius: 50%; transform: translate(-50%, -50%); animation: ringexp 2.6s ease-out infinite; }
+  .ring.r2 { animation-delay: 1.3s; }
+
+  /* stage 2 — chips */
+  .chips { width: 100%; height: 100%; position: relative; }
+  .chip { position: absolute; left: 4px; font-family: var(--mono); font-size: 9.5px; padding: 4px 8px; border-radius: 6px; border: 1px solid #2c3a55; background: rgba(20,28,46,.85); color: #9fb0c8; white-space: nowrap; opacity: 0; }
+  .chip.c1 { top: 4px; animation: chipin 4s ease-in-out infinite; }
+  .chip.c2 { top: 38px; animation: chipin 4s ease-in-out infinite 1s; }
+  .chip.c3 { top: 72px; animation: chipin 4s ease-in-out infinite 2s; }
+
+  /* stage 3 — engine */
+  .engine { width: 74px; height: 74px; position: relative; }
+  .engine .core { position: absolute; inset: 25px; border-radius: 50%; background: radial-gradient(circle, #35e0c8, #1f8f80); box-shadow: 0 0 18px rgba(53,224,200,.7); animation: corepulse 1.8s ease-in-out infinite; }
+  .engine .orbit { position: absolute; inset: 0; border: 1.4px dashed rgba(122,162,255,.5); border-radius: 50%; animation: spin 6s linear infinite; }
+  .engine .orbit.o2 { inset: 12px; border-color: rgba(53,224,200,.45); animation: spin 4s linear infinite reverse; }
+
+  /* stage 4 — evidence pack */
+  .pack { width: 100%; text-align: left; }
+  .ph { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; letter-spacing: .1em; color: var(--dim); margin-bottom: 7px; }
+  .prow { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
+  .pn { font-family: var(--mono); font-size: 11px; width: 18px; font-weight: 700; }
+  .pbar { flex: 1; height: 7px; border-radius: 999px; background: rgba(255,255,255,.07); overflow: hidden; }
+  .pbar i { display: block; height: 100%; border-radius: 999px; width: 0; }
+  .b-high i { background: linear-gradient(90deg, #35e0c8, #3880ff); animation: fill 4.5s ease-in-out infinite; }
+  .b-med i { background: var(--med); animation: fill2 4.5s ease-in-out infinite; }
+  .b-low i { background: #52607a; animation: fill3 4.5s ease-in-out infinite; }
+  .lab { font-size: 8px; font-weight: 700; padding: 1px 5px; border-radius: 999px; }
+  .L-high { background: rgba(53,224,200,.15); color: var(--accent); border: 1px solid rgba(53,224,200,.4); }
+  .L-med { background: rgba(245,177,76,.13); color: var(--med); border: 1px solid rgba(245,177,76,.35); }
+
+  /* ---------- tablet + mobile: vertical pipeline (roomier than cramped horizontal) ---------- */
+  @media (max-width: 860px) {
+    .pipe { display: flex; flex-direction: column; align-items: stretch; }
+    .stage { flex-direction: row; align-items: center; gap: 14px; }
+    .viz { height: auto; width: 74px; flex-shrink: 0; margin-bottom: 0; }
+    .viz-pack { width: 100px; }
+    .road { border-top: none; padding-top: 0; }
+    .conn { align-self: center; width: 2px; height: 30px; background: linear-gradient(180deg, var(--border), #2f3e5c, var(--border)); }
+    .conn .pkt { top: 0; left: 50%; transform: translateX(-50%); animation-name: vtravel; animation-duration: 1.9s; }
+    .conn .pkt:nth-child(2), .conn .pkt:nth-child(3) { display: none; }
+  }
+</style>

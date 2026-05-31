@@ -1,0 +1,82 @@
+---
+// Self-hosted fonts (no Google CDN — perf + EU/GDPR friendly)
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/inter/800.css';
+import '@fontsource/inter/900.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/jetbrains-mono/500.css';
+import '@fontsource/jetbrains-mono/600.css';
+import '../styles/global.css';
+
+const title = 'ChangeOps — find the change that broke production';
+const description =
+  "ChangeOps turns Azure's scattered change history into a ranked, evidence-backed shortlist — so on-call goes from 40 minutes of portal-hopping to under five. Azure-first incident investigation. Launching 2027.";
+
+const site = Astro.site ?? new URL('https://niftrox.com');
+const canonical = new URL(Astro.url.pathname, site).href;
+const ogImage = new URL('/og.png', site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#070b14" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Niftrox · ChangeOps" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Site-wide scroll-reveal. Reduced-motion: do nothing (content stays visible).
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduce) {
+        const selector = '.uc, .pipe, .deliver, .ecard, .rcard, .flow-head, .eh, .rh, .foot-in';
+        const els = Array.from(document.querySelectorAll<HTMLElement>(selector));
+        for (const el of els) {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(26px)';
+          el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)';
+        }
+        const io = new IntersectionObserver((entries) => {
+          for (const e of entries) {
+            if (!e.isIntersecting) continue;
+            const el = e.target as HTMLElement;
+            const sibs = el.parentElement
+              ? Array.from(el.parentElement.children).filter(
+                  (c) => (c as HTMLElement).style && (c as HTMLElement).style.opacity === '0'
+                )
+              : [];
+            const idx = Math.max(0, sibs.indexOf(el));
+            el.style.transitionDelay = idx * 0.08 + 's';
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+            io.unobserve(el);
+          }
+        }, { threshold: 0.16 });
+        for (const el of els) io.observe(el);
+      }
+    </script>
+  </body>
+</html>
