@@ -1,23 +1,12 @@
 ---
-// Hero — "Incident Console". Animated background + ranked evidence scorecard.
+// Hero — content layer over the global animated backdrop.
 ---
 
-<section class="hero" id="hero-stage" aria-label="ChangeOps — Azure-first incident investigation">
-  <div class="bg" aria-hidden="true">
-    <div class="aurora">
-      <b class="b1"></b><b class="b2"></b><b class="b3"></b><b class="b4"></b>
-    </div>
-    <div class="grid"></div>
-    <canvas id="net"></canvas>
-    <div class="sweep"></div>
-    <div id="glow"></div>
-    <div class="vig"></div>
-  </div>
-
+<section class="hero" aria-label="ChangeOps — Azure-first incident investigation">
   <div class="fg">
     <nav class="nav" aria-label="Primary">
-      <a class="brand" href="/" aria-label="Niftrox ChangeOps — home">
-        <img class="logo-mark" src="/logo.png" width="30" height="30" alt="" />
+      <a class="brand" href="/">
+        <img class="logo-mark" src="/logo.png" width="30" height="30" alt="" decoding="async" />
         <span class="wordmark">niftrox<span>/</span>changeops</span>
       </a>
       <span class="tag"><span class="blip"></span>LAUNCHING 2027</span>
@@ -78,51 +67,9 @@
 </section>
 
 <style>
-  .hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 624px;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(180deg, #070b14 0%, #0a0f1e 55%, #080d18 100%);
-    color: var(--text);
-  }
-
-  /* ---------- background layers ---------- */
-  .bg { position: absolute; inset: 0; z-index: 0; }
-  .aurora { position: absolute; inset: -30%; z-index: 0; filter: blur(90px); opacity: .6; }
-  .aurora b { position: absolute; border-radius: 50%; display: block; }
-  .aurora .b1 { width: 46%; height: 52%; left: 54%; top: 2%;  background: radial-gradient(circle, rgba(53,224,200,.6) 0%, transparent 65%); animation: blob1 17s ease-in-out infinite alternate; }
-  .aurora .b2 { width: 42%; height: 48%; left: 70%; top: 42%; background: radial-gradient(circle, rgba(56,128,255,.48) 0%, transparent 65%); animation: blob2 21s ease-in-out infinite alternate; }
-  .aurora .b3 { width: 40%; height: 44%; left: 42%; top: 58%; background: radial-gradient(circle, rgba(94,234,212,.34) 0%, transparent 65%); animation: blob3 19s ease-in-out infinite alternate; }
-  .aurora .b4 { width: 30%; height: 34%; left: 16%; top: 18%; background: radial-gradient(circle, rgba(99,102,241,.26) 0%, transparent 65%); animation: blob1 24s ease-in-out infinite alternate-reverse; }
-
-  .grid {
-    position: absolute; inset: 0; z-index: 1;
-    background-image:
-      linear-gradient(rgba(120,160,200,.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(120,160,200,.06) 1px, transparent 1px);
-    background-size: 44px 44px;
-    -webkit-mask-image: radial-gradient(740px 470px at 68% 28%, #000, transparent 80%);
-    mask-image: radial-gradient(740px 470px at 68% 28%, #000, transparent 80%);
-  }
-  #net { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; }
-  .sweep {
-    position: absolute; inset: 0; z-index: 3; mix-blend-mode: screen; opacity: .5;
-    background: linear-gradient(105deg, transparent 40%, rgba(53,224,200,.12) 48%, rgba(53,224,200,.22) 50%, rgba(53,224,200,.12) 52%, transparent 60%);
-    background-size: 250% 100%; animation: sweep 10s linear infinite;
-  }
-  #glow {
-    position: absolute; z-index: 3; width: 480px; height: 480px; border-radius: 50%;
-    pointer-events: none; transform: translate(-50%, -50%);
-    background: radial-gradient(circle, rgba(53,224,200,.16) 0%, transparent 60%);
-    opacity: 0; transition: opacity .4s; mix-blend-mode: screen;
-  }
-  .vig { position: absolute; inset: 0; z-index: 4; pointer-events: none; box-shadow: inset 0 0 160px 40px rgba(4,7,14,.7); }
-
-  /* ---------- foreground ---------- */
+  .hero { position: relative; min-height: 624px; display: flex; flex-direction: column; color: var(--text); }
   .fg {
-    position: relative; z-index: 5; flex: 1;
+    position: relative; flex: 1;
     display: flex; flex-direction: column;
     width: 100%; max-width: var(--maxw); margin: 0 auto;
     padding: 22px var(--pad) 40px;
@@ -131,11 +78,7 @@
   .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 15px; letter-spacing: -.01em; color: var(--text); }
   .logo-mark { width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border-2); background: #04060c; object-fit: cover; flex-shrink: 0; }
   .wordmark span { color: var(--accent); }
-  .tag {
-    font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--dim);
-    border: 1px solid var(--border-2); padding: 5px 11px; border-radius: 999px;
-    display: inline-flex; align-items: center; gap: 7px;
-  }
+  .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--dim); border: 1px solid var(--border-2); padding: 5px 11px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; background: rgba(8,12,22,.5); }
   .tag .blip { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blip 2s ease-in-out infinite; }
 
   .hero-grid { flex: 1; display: grid; grid-template-columns: 1fr 1.02fr; gap: 32px; align-items: center; padding: 18px 0; }
@@ -145,21 +88,16 @@
   .sub { color: var(--muted); font-size: clamp(14px, 1.4vw, 15px); max-width: 460px; }
 
   .traj { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
-  .traj .t {
-    font-family: var(--mono); font-size: 11px; color: var(--dimmer);
-    border: 1px solid #222c40; padding: 5px 11px; border-radius: 999px;
-    display: flex; align-items: center; gap: 7px;
-  }
+  .traj .t { font-family: var(--mono); font-size: 11px; color: var(--dimmer); border: 1px solid #222c40; padding: 5px 11px; border-radius: 999px; display: flex; align-items: center; gap: 7px; background: rgba(8,12,22,.5); }
   .traj .t::before { content: ""; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #44516b; }
   .traj .t.on { color: #cdeee7; border-color: rgba(53,224,200,.4); }
   .traj .t.on::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 7px var(--accent); }
 
-  /* ---------- scorecard ---------- */
+  /* scorecard — a clean opaque layer (no backdrop-filter, for mobile perf) */
   .scbox { position: relative; }
   .scorecard {
-    background: linear-gradient(180deg, rgba(20,27,44,.8), rgba(13,18,32,.86));
+    background: linear-gradient(180deg, rgba(17,23,38,.95), rgba(11,16,28,.97));
     border: 1px solid var(--border-2); border-radius: 16px; padding: 15px 16px;
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 24px 60px -28px rgba(0,0,0,.9); animation: floaty 6s ease-in-out infinite;
   }
   .sc-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--dim); padding-bottom: 10px; border-bottom: 1px solid #1e2740; }
@@ -181,14 +119,12 @@
   .badge-low { background: rgba(120,138,170,.12); color: var(--low); border: 1px solid rgba(120,138,170,.3); padding: 2px 7px; border-radius: 999px; font-size: 9.5px; font-weight: 700; }
   .scn { font-family: var(--mono); font-size: 15px; font-weight: 700; width: 24px; text-align: right; }
   .scn.med { color: var(--med); } .scn.low { color: var(--low); }
-  .concept-tag { position: absolute; top: -8px; right: 6px; z-index: 6; font-family: var(--mono); font-size: 10px; color: #5b6678; letter-spacing: .1em; }
+  .concept-tag { position: absolute; top: -8px; right: 6px; font-family: var(--mono); font-size: 10px; color: #5b6678; letter-spacing: .1em; }
 
-  /* ---------- scroll cue ---------- */
   .scrollcue { align-self: center; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: var(--dimmer); text-align: center; }
   .scrollcue .mouse { width: 18px; height: 28px; border: 1.5px solid #3a455c; border-radius: 10px; margin: 0 auto 7px; position: relative; display: block; }
   .scrollcue .mouse::after { content: ""; position: absolute; top: 5px; left: 50%; transform: translateX(-50%); width: 3px; height: 6px; border-radius: 2px; background: var(--accent); animation: wheel 1.6s ease-in-out infinite; }
 
-  /* ---------- mobile ---------- */
   @media (max-width: 767px) {
     .hero { min-height: auto; }
     .fg { padding: 20px var(--pad) 30px; }
@@ -199,92 +135,3 @@
     .scrollcue { margin-top: 8px; }
   }
 </style>
-
-<script>
-  const stage = document.getElementById('hero-stage');
-  const canvas = document.getElementById('net') as HTMLCanvasElement | null;
-  const glow = document.getElementById('glow');
-  if (stage && canvas && glow) {
-    const ctx = canvas.getContext('2d')!;
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    type Node = { x: number; y: number; vx: number; vy: number; r: number; hue: string };
-    type Pulse = { x: number; y: number; r: number; max: number };
-    type Streak = { x: number; y: number; vx: number; len: number };
-
-    let W = 0, H = 0, nodes: Node[] = [];
-    const pulses: Pulse[] = [];
-    const streaks: Streak[] = [];
-    let running = false, raf = 0;
-
-    function resize() {
-      const dpr = window.devicePixelRatio || 1;
-      const r = stage!.getBoundingClientRect();
-      W = r.width; H = r.height;
-      canvas!.width = W * dpr; canvas!.height = H * dpr;
-      canvas!.style.width = W + 'px'; canvas!.style.height = H + 'px';
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    function seed() {
-      const n = Math.max(24, Math.min(58, Math.round(W / 20)));
-      nodes = Array.from({ length: n }, () => ({
-        x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - .5) * .26, vy: (Math.random() - .5) * .26,
-        r: Math.random() * 1.7 + .8,
-        hue: Math.random() > .7 ? '122,162,255' : '94,234,212',
-      }));
-    }
-    function spawnPulse() { const p = nodes[Math.floor(Math.random() * nodes.length)]; if (p) pulses.push({ x: p.x, y: p.y, r: 8, max: 240 }); }
-    function spawnStreak() { streaks.push({ x: -20, y: Math.random() * H * .8, vx: 6 + Math.random() * 4, len: 60 + Math.random() * 50 }); }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      for (const p of nodes) { p.x += p.vx; p.y += p.vy; if (p.x < 0 || p.x > W) p.vx *= -1; if (p.y < 0 || p.y > H) p.vy *= -1; }
-      for (let k = pulses.length - 1; k >= 0; k--) {
-        const pl = pulses[k]; pl.r += 2.6; const a = Math.max(0, 1 - pl.r / pl.max);
-        ctx.strokeStyle = `rgba(53,224,200,${a * .5})`; ctx.lineWidth = 1.2;
-        ctx.beginPath(); ctx.arc(pl.x, pl.y, pl.r, 0, Math.PI * 2); ctx.stroke();
-        if (pl.r > pl.max) pulses.splice(k, 1);
-      }
-      for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j]; const d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < 136) {
-          let o = (1 - d / 136) * .3;
-          for (const pl of pulses) { const band = Math.abs(Math.hypot(a.x - pl.x, a.y - pl.y) - pl.r); if (band < 26) o = Math.min(.85, o + .5 * (1 - band / 26)); }
-          ctx.strokeStyle = `rgba(94,234,212,${o})`; ctx.lineWidth = .7;
-          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
-        }
-      }
-      for (const p of nodes) { ctx.fillStyle = `rgba(${p.hue},.9)`; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill(); }
-      for (let k = streaks.length - 1; k >= 0; k--) {
-        const s = streaks[k]; s.x += s.vx;
-        const g = ctx.createLinearGradient(s.x - s.len, s.y, s.x, s.y);
-        g.addColorStop(0, 'rgba(53,224,200,0)'); g.addColorStop(1, 'rgba(53,224,200,.7)');
-        ctx.strokeStyle = g; ctx.lineWidth = 1.4;
-        ctx.beginPath(); ctx.moveTo(s.x - s.len, s.y); ctx.lineTo(s.x, s.y); ctx.stroke();
-        if (s.x > W + 40) streaks.splice(k, 1);
-      }
-      raf = requestAnimationFrame(draw);
-    }
-
-    let pulseTimer = 0, streakTimer = 0;
-    function start() { if (running || reduce) return; running = true; draw(); pulseTimer = window.setInterval(spawnPulse, 1900); streakTimer = window.setInterval(spawnStreak, 2600); }
-    function stop() { if (!running) return; running = false; cancelAnimationFrame(raf); clearInterval(pulseTimer); clearInterval(streakTimer); }
-
-    resize(); seed();
-    if (reduce) { draw(); cancelAnimationFrame(raf); } else { start(); }
-
-    // pause when hero scrolls out of view (perf)
-    if (!reduce && 'IntersectionObserver' in window) {
-      new IntersectionObserver((ents) => { ents.forEach(e => e.isIntersecting ? start() : stop()); }, { threshold: 0 }).observe(stage);
-    }
-    stage.addEventListener('mousemove', (e) => {
-      const r = stage.getBoundingClientRect();
-      glow.style.left = (e.clientX - r.left) + 'px';
-      glow.style.top = (e.clientY - r.top) + 'px';
-      glow.style.opacity = '1';
-    });
-    stage.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-    window.addEventListener('resize', () => { resize(); seed(); });
-  }
-</script>

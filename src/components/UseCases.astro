@@ -1,11 +1,9 @@
 ---
-// Use-cases band — makes the jobs obvious: triage / evidence / postmortems.
+// Use-cases band — translucent layer over the global backdrop.
 ---
 
 <section class="usecases" aria-label="What ChangeOps is for">
   <h2 class="sr-only">What ChangeOps is for</h2>
-  <div class="amb amb-1" aria-hidden="true"></div>
-  <div class="amb amb-2" aria-hidden="true"></div>
   <div class="grid shell">
     <div class="uc">
       <div class="ic" aria-hidden="true">
@@ -38,11 +36,8 @@
 </section>
 
 <style>
-  .usecases { position: relative; overflow: hidden; background: rgba(10,15,26,.74); border-top: 1px solid #161d2e; padding: 36px var(--pad); }
-  .amb { position: absolute; border-radius: 50%; filter: blur(85px); pointer-events: none; z-index: 0; opacity: .55; }
-  .amb-1 { width: 52%; height: 170%; left: -12%; top: -35%; background: radial-gradient(circle, rgba(53,224,200,.2), transparent 60%); animation: ambdrift1 18s ease-in-out infinite alternate; }
-  .amb-2 { width: 48%; height: 160%; right: -12%; top: -25%; background: radial-gradient(circle, rgba(99,102,241,.18), transparent 60%); animation: ambdrift2 23s ease-in-out infinite alternate; }
-  .grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .usecases { position: relative; background: rgba(8,12,22,.5); border-top: 1px solid #1a2336; padding: 36px var(--pad); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
   .uc { display: flex; gap: 14px; align-items: flex-start; }
   .ic { width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(53,224,200,.1); border: 1px solid rgba(53,224,200,.28); transition: transform .25s, box-shadow .25s; }
   .ic svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
@@ -50,7 +45,5 @@
   .uc h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
   .uc p { font-size: 12.5px; color: var(--muted-2); line-height: 1.5; }
 
-  @media (max-width: 767px) {
-    .grid { grid-template-columns: 1fr; gap: 20px; }
-  }
+  @media (max-width: 767px) { .grid { grid-template-columns: 1fr; gap: 20px; } }
 </style>

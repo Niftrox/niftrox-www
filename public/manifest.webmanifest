@@ -1,6 +1,6 @@
 {
-  "name": "Niftrox — ChangeOps",
-  "short_name": "ChangeOps",
+  "name": "Niftrox",
+  "short_name": "Niftrox",
   "description": "Azure-first incident investigation — find the change that broke production, fast.",
   "start_url": "/",
   "scope": "/",
