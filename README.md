@@ -18,7 +18,7 @@ npm run preview    # serve the built dist/
 - `src/layouts/BaseLayout.astro` — `<head>`, meta/OG, fonts, scroll-reveal
 - `src/components/` — `Hero`, `UseCases`, `HowItWorks`, `Delivery`, `UnderTheHood`, `Roadmap`, `SiteFooter`
 - `src/styles/global.css` — design tokens, shared keyframes, reduced-motion
-- `public/` — `favicon.svg`, `og.png`, `CNAME`
+- `public/` — favicons and PWA icons, `manifest.webmanifest`, `sw.js`, `og.png`, `logo.png`, `CNAME`
 
 Fonts are self-hosted (`@fontsource`). All motion respects `prefers-reduced-motion`.
 
