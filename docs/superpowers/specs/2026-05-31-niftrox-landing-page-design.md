@@ -28,7 +28,7 @@ A single-page, **pre-launch** marketing site for ChangeOps. The product is **not
 
 ## 2. Positioning & messaging
 
-Sourced from `niftrox-docs/changeops-mvp-spec-v2.pdf` (MVP spec v2). Authority order per root CLAUDE.md: shipped code → MVP spec → blueprint.
+Sourced from `niftrox-docs/changeops-mvp-spec-v2.pdf` (MVP spec v2). Authority order per root CLAUDE.md: shipped code → MVP spec.
 
 - **One-liner:** ChangeOps turns Azure's scattered change history into a ranked, evidence-backed shortlist — so on-call goes from 40 minutes of portal-hopping to under five.
 - **Headline:** "Find the change that broke production. Fast."
