@@ -2,7 +2,7 @@
 // - navigations: network-first (fresh content), cache fallback, then "/"
 // - static assets: stale-while-revalidate (instant from cache, refreshed in background)
 // Bump VERSION to invalidate caches on a breaking change.
-const VERSION = 'niftrox-v3';
+const VERSION = 'niftrox-v4';
 const CORE = ['/', '/logo.png', '/favicon-32.png', '/manifest.webmanifest'];
 
 self.addEventListener('install', (e) => {

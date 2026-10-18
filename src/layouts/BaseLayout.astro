@@ -9,9 +9,9 @@ import '@fontsource/jetbrains-mono/latin-600.css';
 import '@fontsource/jetbrains-mono/latin-700.css';
 import '../styles/global.css';
 
-const title = 'ChangeOps — find the change that broke production';
+const title = 'ChangeOps — the change-evidence ledger for Azure estates';
 const description =
-  "ChangeOps turns Azure's scattered change history into a ranked, evidence-backed shortlist — so on-call goes from 40 minutes of portal-hopping to under five. Azure-first incident investigation. Launching 2027.";
+  "ChangeOps keeps every change Azure records, with who made it and the before and after where Azure records it, for up to two years, sealed daily so nobody can quietly alter it, and serves it to engineers, to AI assistants over MCP, and to auditors as evidence. Read-only, no credentials held. In build; design partners 2027.";
 
 const site = Astro.site ?? new URL('https://niftrox.com');
 const canonical = new URL(Astro.url.pathname, site).href;
@@ -88,7 +88,7 @@ const ogImage = new URL('/og.png', site).href;
     </script>
 
     <script>
-      // Single ambient correlation-network backdrop for the whole page.
+      // Single ambient network backdrop for the whole page.
       // Capped DPR + ~30fps + node count scaled to viewport = smooth on mobile.
       (() => {
         const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

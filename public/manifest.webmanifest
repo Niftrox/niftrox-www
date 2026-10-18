@@ -1,7 +1,7 @@
 {
   "name": "Niftrox",
   "short_name": "Niftrox",
-  "description": "Azure-first incident investigation — find the change that broke production, fast.",
+  "description": "The change-evidence ledger for Azure estates: what changed, by whom, with the difference, sealed, for two years.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

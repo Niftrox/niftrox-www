@@ -5,8 +5,8 @@
 <section class="how" aria-label="How ChangeOps works">
   <div class="flow-head shell">
     <p class="eyebrow">How it works</p>
-    <h2>From a noisy cloud to a ranked answer</h2>
-    <p class="lead">Connect · collect · evaluate · rank — then delivered where you work.</p>
+    <h2>From the logs Azure already writes to a sealed record</h2>
+    <p class="lead">Connect, collect, record, seal. Your engineers, agents and auditors read from the same ledger.</p>
   </div>
 
   <div class="pipe shell">
@@ -19,9 +19,9 @@
       </div>
       <div class="stxt">
         <div class="step">01 · CONNECT</div>
-        <h3>Connect your Azure</h3>
-        <p class="sp">Securely link subscriptions. Read-only.</p>
-        <div class="road"><b>Azure</b> now · AWS &amp; GCP next</div>
+        <h3>Approve one app, assign Reader</h3>
+        <p class="sp">No secret exchanged or held, nothing installed. Federated identity, the Reader role or a narrower one, revoked from your own portal.</p>
+        <div class="road"><b>Read-only</b> forever</div>
       </div>
     </div>
 
@@ -31,15 +31,16 @@
       <div class="viz" aria-hidden="true">
         <div class="chips">
           <span class="chip c1">Activity Log</span>
-          <span class="chip c2">Resource Graph</span>
-          <span class="chip c3">AKS audit</span>
+          <span class="chip c2">Resource Graph changes</span>
+          <span class="chip c3">Entra ID audit</span>
+          <span class="chip c4">AKS · Key Vault audit</span>
         </div>
       </div>
       <div class="stxt">
         <div class="step">02 · COLLECT</div>
-        <h3>Collect change evidence</h3>
-        <p class="sp">Every change in the incident window.</p>
-        <div class="road"><b>Multi-source</b> · deterministic</div>
+        <h3>Read the logs Azure already writes</h3>
+        <p class="sp">Activity Log, Resource Graph and Entra ID with consent alone. Kubernetes and Key Vault through your own Event Hub or Log Analytics workspace.</p>
+        <div class="road"><b>Raw logs</b> read, kept only inside frozen packs</div>
       </div>
     </div>
 
@@ -47,32 +48,33 @@
 
     <div class="stage">
       <div class="viz" aria-hidden="true">
-        <div class="engine"><div class="orbit"></div><div class="orbit o2"></div><div class="core"></div></div>
+        <div class="merge">
+          <span class="src s1">Activity Log</span>
+          <span class="src s2">Resource Graph</span>
+          <span class="one">one record</span>
+        </div>
       </div>
       <div class="stxt">
-        <div class="step">03 · CORRELATE</div>
-        <h3>Engines evaluate</h3>
-        <p class="sp">Correlate, score &amp; label confidence honestly.</p>
-        <div class="road"><b>+ AI summary</b> later</div>
+        <div class="step">03 · RECORD</div>
+        <h3>One record per change</h3>
+        <p class="sp">When, where, what, who, the before and after, and a pointer to Azure's own record. The same change in two logs becomes one. Actors stay named after the identity is gone.</p>
+        <div class="road"><b>Housekeeping churn</b> folded</div>
       </div>
     </div>
 
     <div class="conn" aria-hidden="true"><span class="pkt"></span><span class="pkt"></span><span class="pkt"></span></div>
 
     <div class="stage">
-      <div class="viz viz-pack" aria-hidden="true">
-        <div class="pack">
-          <div class="ph"><span>EVIDENCE PACK</span><span>0–100</span></div>
-          <div class="prow"><span class="pn" style="color:var(--accent)">92</span><span class="pbar b-high"><i></i></span><span class="lab L-high">HIGH</span></div>
-          <div class="prow"><span class="pn" style="color:var(--med)">71</span><span class="pbar b-med"><i></i></span><span class="lab L-med">MED</span></div>
-          <div class="prow"><span class="pn" style="color:var(--dim)">54</span><span class="pbar b-low"><i></i></span></div>
+      <div class="viz" aria-hidden="true">
+        <div class="chain">
+          <span class="blk">day −2</span><span class="lnk"></span><span class="blk">day −1</span><span class="lnk"></span><span class="blk now">today<i></i></span>
         </div>
       </div>
       <div class="stxt">
-        <div class="step">04 · RANK</div>
-        <h3>Ranked evidence pack</h3>
-        <p class="sp">Most likely change first — attributed.</p>
-        <div class="road"><b>Source-attributed</b> · exportable</div>
+        <div class="step">04 · SEAL</div>
+        <h3>Sealed daily, served everywhere</h3>
+        <p class="sp">Each day's records are hashed into one root, chained to the day before and stamped by an outside time authority. Web app, MCP, packs and the report read the same ledger.</p>
+        <div class="road"><b>RFC 3161 anchor</b> · verify offline</div>
       </div>
     </div>
   </div>
@@ -81,7 +83,7 @@
 <style>
   .how { position: relative; padding: 48px var(--pad) 40px; background: rgba(8,12,22,.5); border-top: 1px solid #1a2336; }
   .flow-head { text-align: center; margin-bottom: 36px; }
-  .flow-head h2 { font-size: clamp(23px, 3vw, 29px); font-weight: 800; letter-spacing: -.02em; margin-top: 10px; line-height: 1.15; }
+  .flow-head h2 { font-size: clamp(23px, 3vw, 29px); font-weight: 800; letter-spacing: -.02em; margin-top: 10px; line-height: 1.15; text-wrap: balance; }
   .flow-head .lead { color: var(--muted-2); font-size: 14px; margin-top: 8px; }
 
   .pipe { display: grid; grid-template-columns: 1fr 46px 1fr 46px 1fr 46px 1.1fr; align-items: stretch; }
@@ -90,7 +92,10 @@
   .step { font-family: var(--mono); font-size: 9.5px; letter-spacing: .16em; color: var(--accent); }
   .stage h3 { font-size: 13.5px; font-weight: 700; margin: 5px 0 3px; }
   .sp { font-size: 11.5px; color: var(--muted-2); line-height: 1.45; }
-  .road { font-family: var(--mono); font-size: 9.5px; color: #5b6678; margin-top: 7px; border-top: 1px dashed #222c40; padding-top: 6px; }
+  .road { font-family: var(--mono); font-size: 9.5px; color: #5b6678; margin-top: auto; padding-top: 6px; border-top: 1px dashed #222c40; }
+  .stxt { display: flex; flex-direction: column; flex: 1; }
+  .stxt .road { margin-top: auto; }
+  .sp { margin-bottom: 7px; }
   .road b { color: var(--dim); }
 
   .conn { align-self: center; position: relative; height: 2px; background: linear-gradient(90deg, var(--border), #2f3e5c, var(--border)); }
@@ -104,28 +109,23 @@
   .ring.r2 { animation-delay: 1.3s; }
 
   .chips { width: 100%; height: 100%; position: relative; }
-  .chip { position: absolute; left: 4px; font-family: var(--mono); font-size: 9.5px; padding: 4px 8px; border-radius: 6px; border: 1px solid #2c3a55; background: rgba(20,28,46,.92); color: #9fb0c8; white-space: nowrap; opacity: 0; }
-  .chip.c1 { top: 4px; animation: chipin 4s ease-in-out infinite; }
-  .chip.c2 { top: 38px; animation: chipin 4s ease-in-out infinite 1s; }
-  .chip.c3 { top: 72px; animation: chipin 4s ease-in-out infinite 2s; }
+  .chip { position: absolute; left: 4px; font-family: var(--mono); font-size: 9.5px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2c3a55; background: rgba(20,28,46,.92); color: #9fb0c8; white-space: nowrap; opacity: 0; }
+  .chip.c1 { top: 2px; animation: chipin 4.8s ease-in-out infinite; }
+  .chip.c2 { top: 26px; animation: chipin 4.8s ease-in-out infinite .8s; }
+  .chip.c3 { top: 50px; animation: chipin 4.8s ease-in-out infinite 1.6s; }
+  .chip.c4 { top: 74px; animation: chipin 4.8s ease-in-out infinite 2.4s; }
 
-  .engine { width: 74px; height: 74px; position: relative; }
-  .engine .core { position: absolute; inset: 25px; border-radius: 50%; background: radial-gradient(circle, #35e0c8, #1f8f80); box-shadow: 0 0 18px rgba(53,224,200,.7); animation: corepulse 1.8s ease-in-out infinite; }
-  .engine .orbit { position: absolute; inset: 0; border: 1.4px dashed rgba(122,162,255,.5); border-radius: 50%; animation: spin 6s linear infinite; }
-  .engine .orbit.o2 { inset: 12px; border-color: rgba(53,224,200,.45); animation: spin 4s linear infinite reverse; }
+  .merge { position: relative; width: 100%; height: 100%; }
+  .src { position: absolute; top: 10px; font-family: var(--mono); font-size: 9.5px; padding: 3px 8px; border-radius: 6px; border: 1px solid #2c3a55; background: rgba(20,28,46,.92); color: #9fb0c8; white-space: nowrap; animation: mergein 4s ease-in-out infinite; }
+  .src.s1 { left: 4px; }
+  .src.s2 { right: 4px; animation-delay: .25s; }
+  .one { position: absolute; left: 50%; bottom: 8px; transform: translateX(-50%); font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 6px 12px; border-radius: 8px; border: 1px solid #2c3a55; background: rgba(20,28,46,.95); color: #cdeee7; white-space: nowrap; animation: onepulse 4s ease-in-out infinite; }
 
-  .pack { width: 100%; text-align: left; }
-  .ph { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; letter-spacing: .1em; color: var(--dim); margin-bottom: 7px; }
-  .prow { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; }
-  .pn { font-family: var(--mono); font-size: 11px; width: 18px; font-weight: 700; }
-  .pbar { flex: 1; height: 7px; border-radius: 999px; background: rgba(255,255,255,.07); overflow: hidden; }
-  .pbar i { display: block; height: 100%; border-radius: 999px; width: 0; }
-  .b-high i { background: linear-gradient(90deg, #35e0c8, #3880ff); animation: fill 4.5s ease-in-out infinite; }
-  .b-med i { background: var(--med); animation: fill2 4.5s ease-in-out infinite; }
-  .b-low i { background: #52607a; animation: fill3 4.5s ease-in-out infinite; }
-  .lab { font-size: 8px; font-weight: 700; padding: 1px 5px; border-radius: 999px; }
-  .L-high { background: rgba(53,224,200,.15); color: var(--accent); border: 1px solid rgba(53,224,200,.4); }
-  .L-med { background: rgba(245,177,76,.13); color: var(--med); border: 1px solid rgba(245,177,76,.35); }
+  .chain { display: flex; align-items: center; }
+  .blk { position: relative; font-family: var(--mono); font-size: 9.5px; padding: 8px 9px; border: 1px solid #2c3a55; border-radius: 7px; background: rgba(20,28,46,.92); color: #9fb0c8; white-space: nowrap; }
+  .lnk { width: 14px; height: 2px; background: linear-gradient(90deg, #2f3e5c, rgba(53,224,200,.7)); flex-shrink: 0; }
+  .blk.now { color: #cdeee7; border-color: rgba(53,224,200,.5); animation: sealstamp 3s ease-in-out infinite; }
+  .blk.now i { position: absolute; top: -5px; right: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blip 2s ease-in-out infinite; }
 
   /* mobile: stacked full-width cards (viz on top, text below) with vertical connectors */
   @media (max-width: 860px) {

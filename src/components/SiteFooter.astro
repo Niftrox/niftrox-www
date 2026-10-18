@@ -1,21 +1,24 @@
 ---
-// Footer — brand + logo, compliance/security badges, copyright.
+// Footer — brand + logo, the security and compliance posture, contact, copyright.
 ---
 
 <footer class="foot">
   <div class="foot-in shell">
     <div class="fbrand">
       <img class="logo-mark" src="/logo.png" width="26" height="26" alt="" />
-      <span class="fb">niftrox<span>/</span>changeops · launching 2027</span>
+      <span class="fb">niftrox<span>/</span>changeops · in build</span>
     </div>
     <div class="badges">
-      <span class="fbadge"><b>SOC 2</b></span>
-      <span class="fbadge"><b>GDPR</b></span>
-      <span class="fbadge"><b>Read-only</b> access</span>
-      <span class="fbadge"><b>Workload Identity</b></span>
+      <span class="fbadge"><b>SOC 2</b> controls from day one</span>
+      <span class="fbadge"><b>UK GDPR</b> · EU hosted · DPA</span>
+      <span class="fbadge"><b>Read-only</b> · no credentials held</span>
+      <span class="fbadge"><b>Sealed daily</b> · RFC 3161</span>
     </div>
   </div>
-  <div class="copyright shell">© 2026 Niftrox. All rights reserved.</div>
+  <div class="foot-meta shell">
+    <span class="copyright">© 2026 Niftrox. All rights reserved.</span>
+    <a class="contact" href="mailto:amir@niftrox.com">Design-partner conversations: amir@niftrox.com</a>
+  </div>
 </footer>
 
 <style>
@@ -29,7 +32,9 @@
   .badges { display: flex; gap: 9px; flex-wrap: wrap; }
   .fbadge { font-family: var(--mono); font-size: 10px; color: var(--dim); border: 1px solid #222c40; padding: 5px 10px; border-radius: 7px; }
   .fbadge b { color: #9fb0c8; font-weight: 600; }
-  .copyright { margin-top: 16px; font-size: 12px; color: var(--muted-2); }
+  .foot-meta { margin-top: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; font-size: 12px; color: var(--muted-2); }
+  .contact { color: #9fb0c8; border-bottom: 1px solid #2a3650; padding-bottom: 1px; }
+  .contact:hover { color: var(--accent-2); border-color: rgba(53,224,200,.5); }
 
-  @media (max-width: 560px) { .foot-in { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 560px) { .foot-in, .foot-meta { flex-direction: column; align-items: flex-start; } }
 </style>

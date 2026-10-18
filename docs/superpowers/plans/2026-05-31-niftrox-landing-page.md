@@ -1,5 +1,8 @@
 # niftrox.com Landing Page Implementation Plan
 
+> Historical record of the May 2026 build. The page copy and structure were revised on 2026-10-18 to the v3 product definition; the current design is `../specs/2026-05-31-niftrox-landing-page-design.md`.
+
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Ship a single-page, fully-responsive, animated pre-launch landing page for ChangeOps at niftrox.com, built with Astro and deployed to GitHub Pages.
