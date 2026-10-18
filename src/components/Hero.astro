@@ -1,63 +1,63 @@
 ---
-// Hero — content layer over the global animated backdrop.
+// Hero — content layer over the global animated backdrop. The concept card is one change record from the ledger.
 ---
 
-<section class="hero" aria-label="ChangeOps — Azure-first incident investigation">
+<section class="hero" aria-label="ChangeOps — the change-evidence ledger for Azure estates">
   <div class="fg">
     <nav class="nav" aria-label="Primary">
       <a class="brand" href="/">
         <img class="logo-mark" src="/logo.png" width="30" height="30" alt="" decoding="async" />
         <span class="wordmark">niftrox<span>/</span>changeops</span>
       </a>
-      <span class="tag"><span class="blip"></span>LAUNCHING 2027</span>
+      <span class="tag"><span class="blip"></span>IN BUILD · DESIGN PARTNERS 2027</span>
     </nav>
 
     <div class="hero-grid">
       <div class="copy">
-        <p class="eyebrow">Azure-first incident investigation</p>
-        <h1>Find the change<br />that broke production. <span class="muted">Fast.</span></h1>
+        <p class="eyebrow">The change-evidence ledger for Azure estates</p>
+        <h1>Azure forgets what a change did after 14&nbsp;days. ChangeOps keeps it for two&nbsp;years.</h1>
         <p class="sub">
-          ChangeOps turns Azure's scattered change history into a ranked,
-          evidence-backed shortlist — so on-call goes from 40 minutes of
-          portal-hopping to under five.
+          Every change Azure records, who made it, and the before and after where Azure keeps one.
+          Held for up to two years, sealed every day so nobody can quietly alter it, and served to
+          your engineers, your AI assistants and your auditors. Read-only. No credentials held.
         </p>
-        <div class="traj">
-          <span class="t on">Azure today</span>
-          <span class="t">AWS &amp; GCP next</span>
-          <span class="t">AI summaries later</span>
+        <div class="sources" aria-label="Sources">
+          <span class="t on">Control plane</span>
+          <span class="t on">Entra ID</span>
+          <span class="t on">Kubernetes</span>
+          <span class="t on">Key Vault</span>
+          <span class="t">SQL · later</span>
         </div>
       </div>
 
       <div class="scbox">
         <span class="concept-tag">// concept</span>
-        <div class="scorecard">
-          <div class="sc-head"><span>RANKED EVIDENCE</span><span>3 suspects · 14:00–14:10Z</span></div>
-          <div class="sc1">
-            <div class="sc1-top">
-              <span class="rk">#1</span>
-              <span class="sc-score">92</span>
-              <span class="badge-high">HIGH</span>
-              <span class="mono-dim">deterministic</span>
-            </div>
-            <div class="sc1-title">Microsoft.Web/sites · app config updated</div>
-            <div class="sc1-meta"><b>deploy-sp@prod</b> · 4m before alert · Activity Log ↔ Resource Graph</div>
+        <div class="record">
+          <div class="rc-head"><span>CHANGE RECORD</span><span>chg_01j9…k4 · sealed</span></div>
+          <div class="rc-op">
+            <div class="rc-title">Network security group · rule <b>db-ingress</b> updated</div>
+            <div class="rc-meta">12 Sep · 09:31:07 UTC · prod-network · rg-shared-net</div>
           </div>
-          <div class="scrow">
-            <span class="rk">#2</span>
-            <div class="scrow-mid">
-              <div class="scrow-title">AKS · node pool image upgrade</div>
-              <div class="scrow-src">AKS audit log · heuristic</div>
-            </div>
-            <span class="badge-med">MED</span><span class="scn med">71</span>
+          <div class="rc-actor">
+            <span class="rc-k">who</span>
+            <span class="rc-v"><b>sp-terraform-prod</b><i>automation identity</i></span>
           </div>
-          <div class="scrow">
-            <span class="rk">#3</span>
-            <div class="scrow-mid">
-              <div class="scrow-title">Network · NSG rule changed</div>
-              <div class="scrow-src">Activity Log</div>
-            </div>
-            <span class="badge-low">LOW</span><span class="scn low">54</span>
+          <div class="diff" aria-label="Before and after">
+            <div class="dl del"><span class="g">−</span><span class="k">sourceAddressPrefix</span><span class="v">10.40.0.0/16</span></div>
+            <div class="dl add"><span class="g">+</span><span class="k">sourceAddressPrefix</span><span class="v">Internet</span></div>
+            <div class="dl del"><span class="g">−</span><span class="k">destinationPortRange</span><span class="v">1433</span></div>
+            <div class="dl add"><span class="g">+</span><span class="k">destinationPortRange</span><span class="v">*</span></div>
           </div>
+          <div class="rc-foot">
+            <span>Activity Log + Resource Graph · one record</span>
+            <span class="seal"><i></i>day root anchored 13 Sep · RFC 3161</span>
+          </div>
+        </div>
+        <div class="mcp">
+          <span class="mcp-client">Claude</span>
+          <span class="mcp-line" aria-hidden="true"></span>
+          <code>query_changes(prod, 12 Sep 08:30–09:35)</code>
+          <span class="mcp-res">11 changes · same answer every time</span>
         </div>
       </div>
     </div>
@@ -74,51 +74,62 @@
     width: 100%; max-width: var(--maxw); margin: 0 auto;
     padding: 22px var(--pad) 40px;
   }
-  .nav { display: flex; align-items: center; justify-content: space-between; }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 15px; letter-spacing: -.01em; color: var(--text); }
   .logo-mark { width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border-2); background: #04060c; object-fit: cover; flex-shrink: 0; }
   .wordmark span { color: var(--accent); }
-  .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--dim); border: 1px solid var(--border-2); padding: 5px 11px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; background: rgba(8,12,22,.5); }
+  .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; color: var(--dim); border: 1px solid var(--border-2); padding: 5px 11px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; background: rgba(8,12,22,.5); white-space: nowrap; }
   .tag .blip { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blip 2s ease-in-out infinite; }
 
-  .hero-grid { flex: 1; display: grid; grid-template-columns: 1fr 1.02fr; gap: 32px; align-items: center; padding: 18px 0; }
+  .hero-grid { flex: 1; display: grid; grid-template-columns: 1.08fr 1fr; gap: 32px; align-items: center; padding: 18px 0; }
   .hero-grid > * { min-width: 0; }
-  h1 { font-size: clamp(34px, 5vw, 46px); line-height: 1.03; font-weight: 800; letter-spacing: -.03em; margin: 15px 0 14px; }
-  h1 .muted { color: #5e6b82; }
-  .sub { color: var(--muted); font-size: clamp(14px, 1.4vw, 15px); max-width: 460px; }
+  h1 { font-size: clamp(30px, 3.6vw, 40px); line-height: 1.06; font-weight: 800; letter-spacing: -.03em; margin: 15px 0 14px; text-wrap: balance; }
+  .sub { color: var(--muted); font-size: clamp(14px, 1.4vw, 15px); max-width: 470px; }
 
-  .traj { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
-  .traj .t { font-family: var(--mono); font-size: 11px; color: var(--dimmer); border: 1px solid #222c40; padding: 5px 11px; border-radius: 999px; display: flex; align-items: center; gap: 7px; background: rgba(8,12,22,.5); }
-  .traj .t::before { content: ""; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #44516b; }
-  .traj .t.on { color: #cdeee7; border-color: rgba(53,224,200,.4); }
-  .traj .t.on::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 7px var(--accent); }
+  .sources { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+  .sources .t { font-family: var(--mono); font-size: 11px; color: var(--dimmer); border: 1px solid #222c40; padding: 5px 11px; border-radius: 999px; display: flex; align-items: center; gap: 7px; background: rgba(8,12,22,.5); }
+  .sources .t::before { content: ""; width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #44516b; }
+  .sources .t.on { color: #cdeee7; border-color: rgba(53,224,200,.4); }
+  .sources .t.on::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 7px var(--accent); }
 
-  /* scorecard — a clean opaque layer (no backdrop-filter, for mobile perf) */
+  /* change record — a clean opaque layer (no backdrop-filter, for mobile perf) */
   .scbox { position: relative; }
-  .scorecard {
+  .record {
     background: linear-gradient(180deg, rgba(17,23,38,.95), rgba(11,16,28,.97));
     border: 1px solid var(--border-2); border-radius: 16px; padding: 15px 16px;
     box-shadow: 0 24px 60px -28px rgba(0,0,0,.9); animation: floaty 6s ease-in-out infinite;
   }
-  .sc-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--dim); padding-bottom: 10px; border-bottom: 1px solid #1e2740; }
-  .sc1 { padding: 11px 0; border-bottom: 1px solid #1e2740; }
-  .sc1-top { display: flex; align-items: center; gap: 9px; }
-  .rk { font-family: var(--mono); font-size: 11px; color: var(--dim); font-weight: 600; }
-  .sc-score { font-size: 26px; font-weight: 800; color: var(--accent); line-height: 1; }
-  .badge-high { background: rgba(53,224,200,.14); color: var(--accent); border: 1px solid rgba(53,224,200,.4); padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700; animation: pulse 2.6s ease-in-out infinite; }
-  .mono-dim { font-family: var(--mono); font-size: 10px; color: var(--dimmer); margin-left: auto; }
-  .sc1-title { font-size: 14px; font-weight: 600; margin-top: 8px; }
-  .sc1-meta { font-family: var(--mono); font-size: 10.5px; color: var(--dim); margin-top: 5px; }
-  .sc1-meta b { color: #aeb8ca; font-weight: 600; }
-  .scrow { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px solid #1e2740; }
-  .scrow:last-child { border-bottom: none; }
-  .scrow-mid { flex: 1; min-width: 0; }
-  .scrow-title { font-size: 12.5px; font-weight: 600; }
-  .scrow-src { font-family: var(--mono); font-size: 10px; color: var(--dim); margin-top: 2px; }
-  .badge-med { background: rgba(245,177,76,.13); color: var(--med); border: 1px solid rgba(245,177,76,.35); padding: 2px 7px; border-radius: 999px; font-size: 9.5px; font-weight: 700; }
-  .badge-low { background: rgba(120,138,170,.12); color: var(--low); border: 1px solid rgba(120,138,170,.3); padding: 2px 7px; border-radius: 999px; font-size: 9.5px; font-weight: 700; }
-  .scn { font-family: var(--mono); font-size: 15px; font-weight: 700; width: 24px; text-align: right; }
-  .scn.med { color: var(--med); } .scn.low { color: var(--low); }
+  .rc-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--dim); padding-bottom: 10px; border-bottom: 1px solid #1e2740; }
+  .rc-op { padding: 11px 0 9px; }
+  .rc-title { font-size: 14px; font-weight: 600; }
+  .rc-title b { color: var(--accent); font-weight: 600; }
+  .rc-meta { font-family: var(--mono); font-size: 10.5px; color: var(--dim); margin-top: 4px; }
+  .rc-actor { display: flex; gap: 12px; align-items: baseline; font-size: 12.5px; padding: 0 0 10px; border-bottom: 1px solid #1e2740; }
+  .rc-k { font-family: var(--mono); font-size: 10px; letter-spacing: .1em; color: var(--dim); text-transform: uppercase; }
+  .rc-v b { font-weight: 600; color: var(--text); }
+  .rc-v i { font-style: normal; color: var(--dim); font-family: var(--mono); font-size: 10.5px; margin-left: 8px; }
+
+  .diff { font-family: var(--mono); font-size: 11px; padding: 10px 0; border-bottom: 1px solid #1e2740; display: grid; gap: 3px; }
+  .dl { display: grid; grid-template-columns: 12px 1fr auto; gap: 8px; align-items: center; padding: 3px 8px; border-radius: 6px; min-width: 0; }
+  .dl .k { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .dl .v { font-weight: 600; }
+  .dl.del { background: rgba(224,138,138,.07); color: #b79a9a; }
+  .dl.del .g { color: #e08a8a; }
+  .dl.del .v { text-decoration: line-through; text-decoration-color: rgba(224,138,138,.6); }
+  .dl.add { background: rgba(53,224,200,.08); color: #bfeee6; }
+  .dl.add .g { color: var(--accent); }
+  .dl.add .v { color: var(--accent-2); }
+
+  .rc-foot { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 10px; color: var(--dim); padding-top: 10px; }
+  .seal { display: inline-flex; align-items: center; gap: 6px; color: #cdeee7; white-space: nowrap; }
+  .seal i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); animation: blip 2.6s ease-in-out infinite; }
+
+  .mcp { margin-top: 12px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--mono); font-size: 10.5px; color: var(--dim); padding: 9px 12px; border: 1px dashed #2a3650; border-radius: 10px; background: rgba(8,12,22,.5); }
+  .mcp-client { color: var(--text); font-weight: 600; }
+  .mcp-line { width: 18px; height: 2px; background: linear-gradient(90deg, #2f3e5c, var(--accent)); border-radius: 2px; position: relative; overflow: hidden; }
+  .mcp-line::after { content: ""; position: absolute; top: -2px; left: 0; width: 5px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 6px var(--accent); animation: travel 2.4s linear infinite; }
+  .mcp code { color: #9fb0c8; font-family: inherit; }
+  .mcp-res { margin-left: auto; color: #cdeee7; }
   .concept-tag { position: absolute; top: -8px; right: 6px; font-family: var(--mono); font-size: 10px; color: #5b6678; letter-spacing: .1em; }
 
   .scrollcue { align-self: center; font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: var(--dimmer); text-align: center; }
@@ -128,15 +139,19 @@
   @media (max-width: 767px) {
     .hero { min-height: auto; }
     .fg { padding: 20px var(--pad) 30px; }
+    .nav { flex-wrap: wrap; }
+    .tag { white-space: normal; letter-spacing: .08em; }
     .hero-grid { grid-template-columns: 1fr; gap: 26px; padding: 28px 0; }
-    h1 { font-size: clamp(28px, 7.4vw, 34px); overflow-wrap: anywhere; }
+    h1 { font-size: clamp(27px, 7vw, 33px); overflow-wrap: anywhere; }
     .sub { max-width: none; overflow-wrap: anywhere; }
-    .sc1-meta { line-height: 1.5; }
+    .rc-actor { flex-wrap: wrap; gap: 6px; }
+    .rc-v i { display: block; margin: 2px 0 0; }
+    .mcp-res { margin-left: 0; width: 100%; }
     .scrollcue { margin-top: 8px; }
   }
 
   /* desktop/landscape only: frosted glass (mobile keeps the solid card for perf) */
   @media (min-width: 861px) {
-    .scorecard { background: linear-gradient(180deg, rgba(17,23,38,.62), rgba(11,16,28,.7)); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+    .record { background: linear-gradient(180deg, rgba(17,23,38,.62), rgba(11,16,28,.7)); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
   }
 </style>

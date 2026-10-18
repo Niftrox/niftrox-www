@@ -1,6 +1,6 @@
 /* ============================================================
    niftrox.com — global tokens, reset, base, shared keyframes
-   Design direction: "Incident Console" (dark / teal)
+   Design direction: "Evidence Console" (dark / teal)
    ============================================================ */
 
 :root {
@@ -120,13 +120,11 @@ img, svg, canvas { display: block; }
 @keyframes floaty { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
 
 /* pipeline */
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes corepulse { 0%,100% { transform: scale(.85); opacity: .85; } 50% { transform: scale(1.05); opacity: 1; } }
 @keyframes ringexp { 0% { width: 22px; height: 22px; opacity: .8; } 100% { width: 104px; height: 74px; opacity: 0; } }
+@keyframes mergein { 0% { opacity: 0; transform: translateY(-6px); } 18% { opacity: 1; transform: translateY(0); } 52% { opacity: 1; transform: translateY(0); } 74% { opacity: 0; transform: translateY(42px) scale(.9); } 100% { opacity: 0; } }
+@keyframes onepulse { 0%, 58% { border-color: #2c3a55; box-shadow: none; } 76% { border-color: var(--accent); box-shadow: 0 0 18px rgba(53,224,200,.5); } 100% { border-color: #2c3a55; box-shadow: none; } }
+@keyframes sealstamp { 0%, 68% { box-shadow: none; } 84% { box-shadow: 0 0 16px rgba(53,224,200,.55); } 100% { box-shadow: none; } }
 @keyframes chipin { 0% { transform: translateX(-14px); opacity: 0; } 16% { opacity: 1; transform: translateX(0); } 78% { opacity: 1; } 92% { opacity: 0; } 100% { opacity: 0; } }
-@keyframes fill  { 0% { width: 0; } 26% { width: 92%; } 92% { width: 92%; } 100% { width: 0; } }
-@keyframes fill2 { 0% { width: 0; } 32% { width: 71%; } 92% { width: 71%; } 100% { width: 0; } }
-@keyframes fill3 { 0% { width: 0; } 38% { width: 54%; } 92% { width: 54%; } 100% { width: 0; } }
 
 /* connectors / packets */
 @keyframes travel  { 0% { left: -6px; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { left: 100%; opacity: 0; } }

@@ -1,5 +1,5 @@
 ---
-// Use-cases band — translucent layer over the global backdrop.
+// Use-cases band — the two buyers and the agents that use the ledger.
 ---
 
 <section class="usecases" aria-label="What ChangeOps is for">
@@ -10,17 +10,8 @@
         <svg viewBox="0 0 24 24"><path d="M13 2 L4 14 h7 l-1 8 9-12 h-7 z" /></svg>
       </div>
       <div>
-        <h3>Triage in minutes</h3>
-        <p>Find the change behind a live incident — under five minutes, no portal-hopping.</p>
-      </div>
-    </div>
-    <div class="uc">
-      <div class="ic" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M21 8 L12 3 L3 8 v8 l9 5 9-5 z" /><path d="M3 8 l9 5 9-5 M12 13 v8" /></svg>
-      </div>
-      <div>
-        <h3>Evidence packs</h3>
-        <p>Timestamped, attributed, confidence-labelled — and exportable anywhere.</p>
+        <h3>The "nobody changed anything" incident</h3>
+        <p>The role grant, the firewall rule, the Key Vault setting, the policy remediation, the auto-upgrade: changes no deploy channel shows, on one timeline at 3 a.m. and a month later.</p>
       </div>
     </div>
     <div class="uc">
@@ -28,8 +19,17 @@
         <svg viewBox="0 0 24 24"><path d="M7 3 h10 a2 2 0 0 1 2 2 v14 a2 2 0 0 1 -2 2 H7 a2 2 0 0 1 -2 -2 V5 a2 2 0 0 1 2 -2 z" /><path d="M9 8 h6 M9 12 h6 M9 16 h4" /></svg>
       </div>
       <div>
-        <h3>Postmortems &amp; audits</h3>
-        <p>Blameless postmortems, compliance audits, and vendor escalations — in one export.</p>
+        <h3>Every production change last quarter, by whom</h3>
+        <p>Sealed evidence packs and a scheduled period report: every production change, by whom, as evidence for SOC 2, ISO 27001, DORA and NIS2. Anyone can verify a pack offline, without an account.</p>
+      </div>
+    </div>
+    <div class="uc">
+      <div class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M4 5 h16 v13 H4 z" /><path d="M8 10 l3 2.5 -3 2.5 M13 15 h4" /></svg>
+      </div>
+      <div>
+        <h3>Your own AI asks the ledger</h3>
+        <p>Claude, ChatGPT, GitHub Copilot, Copilot Studio and Azure SRE Agent connect over MCP with your login and your roles. The same question gets the same answer, with no model in between. Every call on the record.</p>
       </div>
     </div>
   </div>
@@ -42,7 +42,7 @@
   .ic { width: 40px; height: 40px; border-radius: 11px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(53,224,200,.1); border: 1px solid rgba(53,224,200,.28); transition: transform .25s, box-shadow .25s; }
   .ic svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; }
   .uc:hover .ic { transform: translateY(-3px) scale(1.05); box-shadow: 0 10px 24px -10px rgba(53,224,200,.5); }
-  .uc h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .uc h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; text-wrap: balance; }
   .uc p { font-size: 12.5px; color: var(--muted-2); line-height: 1.5; }
 
   @media (max-width: 767px) { .grid { grid-template-columns: 1fr; gap: 20px; } }

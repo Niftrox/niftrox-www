@@ -1,34 +1,44 @@
 ---
-// Under the hood — engineering credibility (spec-accurate language for the ICP).
+// Under the hood — what makes the record worth trusting (manual-accurate language for the ICP).
 ---
 
-<section class="hood" aria-label="How the engine works">
+<section class="hood" aria-label="What makes the record trustworthy">
   <div class="shell">
     <div class="eh">
       <p class="eyebrow">Under the hood</p>
-      <h2>Built like an evidence engine — not a dashboard</h2>
-      <p class="lead">The substance that makes the ranking trustworthy.</p>
+      <h2>Built as evidence, not a dashboard</h2>
+      <p class="lead">What makes the record worth trusting.</p>
     </div>
     <div class="egrid">
       <div class="ecard">
+        <div class="et">SEALED</div>
+        <h3>A daily root, chained and anchored</h3>
+        <p>Each day's records hash into one root, chained to the day before and stamped by an RFC 3161 timestamp authority. Any later change to the past shows. A frozen pack verifies offline, years later, without ChangeOps.</p>
+      </div>
+      <div class="ecard">
+        <div class="et">READ-ONLY</div>
+        <h3>No secret to steal, nothing to rotate</h3>
+        <p>Admin consent, the Reader role and federated workload identity. Nothing installed in your estate. The one write ChangeOps ever makes into your cloud is evidence, into a store you designate, with a send-only role you can revoke. Fields known to carry secrets are redacted before anything is stored.</p>
+      </div>
+      <div class="ecard">
         <div class="et">DETERMINISTIC</div>
-        <h3>Joined on correlationId</h3>
-        <p>Control-plane changes correlate deterministically, with a bounded time-window fallback. <code>HIGH</code> only when sources agree.</p>
+        <h3>Facts and labels, never causation</h3>
+        <p>ChangeOps runs no model of its own and sends none of your data to one. The same question returns the same answer for the same ledger state. Your agent does the reasoning.</p>
       </div>
       <div class="ecard">
-        <div class="et">HONEST</div>
-        <h3>Calibrated confidence</h3>
-        <p>AKS audit evidence is heuristic and labelled <code>MED</code> — never dressed up as certainty. The engineer makes the call.</p>
-      </div>
-      <div class="ecard">
-        <div class="et">TRACEABLE</div>
-        <h3>Source-attributed</h3>
-        <p>Every ranked item keeps its raw Azure provenance, so you can drill straight back into the original evidence.</p>
+        <div class="et">NAMED</div>
+        <h3>Actors kept after the identity is gone</h3>
+        <p>Every change attributed to a person, an automation identity, Microsoft or an AI agent. The same change seen in two Azure logs is one record, and system churn is summarised so it never buries a real change.</p>
       </div>
       <div class="ecard">
         <div class="et">ISOLATED</div>
-        <h3>Tenant-safe &amp; read-only</h3>
-        <p>Workload-identity access, no stored credentials, per-tenant row-level isolation. We never store your raw logs.</p>
+        <h3>Every query scoped to your organisation</h3>
+        <p>Row-level security on every query, MFA on every account, EU hosting. No raw logs kept outside frozen packs. Full export on every plan, deletion within 30 days of leaving.</p>
+      </div>
+      <div class="ecard">
+        <div class="et">AUDITED</div>
+        <h3>Every call on the record</h3>
+        <p>Each human and agent action is on the record before the response returns, kept two years and exportable. Admins see and revoke every connected assistant.</p>
       </div>
     </div>
   </div>
@@ -40,13 +50,12 @@
   .eh { text-align: center; margin-bottom: 24px; }
   .eh h2 { font-size: clamp(21px, 2.6vw, 25px); font-weight: 800; letter-spacing: -.02em; margin-top: 8px; line-height: 1.2; }
   .eh .lead { color: var(--muted-2); font-size: 13px; margin-top: 7px; }
-  .egrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .egrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
   .ecard { border: 1px solid var(--border); border-radius: 14px; padding: 15px; background: var(--panel); transition: border-color .2s, transform .2s; }
   .ecard:hover { border-color: #35506a; transform: translateY(-2px); }
   .et { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; color: var(--accent); }
   .ecard h3 { font-size: 14px; font-weight: 700; margin: 9px 0 5px; }
   .ecard p { font-size: 11.5px; color: var(--muted-2); line-height: 1.55; }
-  .ecard code { font-family: var(--mono); color: #9fb0c8; font-size: 10.5px; background: rgba(255,255,255,.05); padding: 1px 5px; border-radius: 4px; }
 
   @media (max-width: 979px) { .egrid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .egrid { grid-template-columns: 1fr; } }
