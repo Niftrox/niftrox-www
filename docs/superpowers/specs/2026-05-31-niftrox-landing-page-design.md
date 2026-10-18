@@ -13,9 +13,9 @@
 A single-page, **pre-launch** marketing site for ChangeOps. The product is **in build**; design partners connect in 2027 and paid pilots start in 2028. The page communicates, at a high level, what ChangeOps is and makes a credible impression on two readers: the platform lead who owns an Azure estate and the security or compliance owner who answers auditors. It is **information + motion only**.
 
 ### Goals
-- Communicate the product thesis: *Azure forgets what changed after 14 days; ChangeOps keeps every change, with who made it and the before and after, for two years, sealed daily, and serves it to engineers, AI assistants over MCP, and auditors.*
+- Communicate the product thesis: *proof of every change in an Azure estate: what changed, who changed it, the before and after where Azure keeps one, sealed daily, held for up to two years, served to engineers, AI assistants over MCP, and auditors.*
 - Make a skeptical **platform/SRE engineer** and a **compliance owner** believe this is evidence, not a dashboard.
-- Convey the real phases (connect and remember → evidence → compliance tools → enterprise extras when funded) and the three uses (the "nobody changed anything" incident, the period report and sealed packs, the customer's own AI asking over MCP).
+- Convey the real phases (connect and remember → evidence → compliance tools → enterprise extras if funded) and the three uses (the "nobody changed anything" incident, the period report and sealed packs, the customer's own AI asking over MCP).
 - Be **fully responsive** (mobile-first) with rich-but-tasteful animation throughout.
 
 ### Non-goals (hard constraints)
@@ -31,7 +31,7 @@ A single-page, **pre-launch** marketing site for ChangeOps. The product is **in 
 Sourced from `niftrox-docs/changeops-founder-manual-v3.md` (§1 product, §2 buyers, §3 features, §4 stable core, §6 how it works, §10 roadmap, §12 SOC 2) and `changeops-mvp-spec-v3.md` (§8 MCP, §11.17 verify page, §13 security). Authority order per root CLAUDE.md: shipped code → MVP spec / founder manual. Phase years come from the COPS Jira releases (Phase 1 to Nov 2027, Phase 2 to Nov 2028, Phase 3 to Aug 2029, Phase 4 conditional).
 
 - **Positioning line:** The change-evidence ledger for Azure estates: what changed, by whom, with the difference, sealed, for two years.
-- **Headline:** "Azure forgets what changed after 14 days. ChangeOps keeps it for two years."
+- **Headline:** "Proof of every change in your Azure estate." The 14-day memory point is the subhead's reason, never the headline: the manual treats retention as the leg Microsoft is most likely to erode (§1 weak points, §17).
 - **Eyebrow:** "The change-evidence ledger for Azure estates"
 - **Status pill:** "IN BUILD · DESIGN PARTNERS 2027"
 - **Sources shown:** Control plane · Entra ID · Kubernetes · Key Vault · SQL (later).
@@ -41,7 +41,7 @@ Sourced from `niftrox-docs/changeops-founder-manual-v3.md` (§1 product, §2 buy
 - The product ships **no tuned ranking scores, confidence labels or summaries of its own**. It returns a deterministic "check this first" order with the reasons shown, one-line difference summaries and churn counts; the customer's agent reasons (manual §1 scope-creep box, §3 B2 and B6, §16 rules 5 and 6).
 - **Never sell engineer hours saved**; the page sells the two-year memory, the "nobody changed anything" incident and audit evidence (manual §7).
 - **Interfaces shown as delivered:** MCP clients (Claude, ChatGPT, GitHub Copilot, Copilot Studio, Azure SRE Agent), the web app, the REST API and signed webhooks, share links, evidence packs and the period report. **Later (dashed):** evidence delivery into the customer's SIEM and into Vanta or Drata by the customer's own script. No chat, ticketing or incident-tool integrations exist or are planned; share links cover them (manual §3 "not built").
-- **Other clouds:** validated in the design, built only when a customer funds them. Never shown as "next".
+- **Other clouds:** not shown anywhere on the page. The manual treats them as a customer-funded possibility (§3 "not built", §10 phase 4) and the ideal customer is Azure-primary (§2); advertising them invites the wrong buyer.
 - **Compliance badges** state the posture, not a certification: "SOC 2 controls from day one", "UK GDPR · EU hosted · DPA", "Read-only · no credentials held", "Sealed daily · RFC 3161".
 - The product UI shown (the change record card) is labelled **`// concept`** so it reads as an illustration, not a live screenshot.
 
@@ -64,7 +64,7 @@ Sourced from `niftrox-docs/changeops-founder-manual-v3.md` (§1 product, §2 buy
 3. **How it works** — animated pipeline: **01 Connect** (approve one app, assign Reader; read-only forever) → **02 Collect** (Activity Log, Resource Graph changes, Entra ID audit, AKS and Key Vault audit; raw logs read, kept only inside frozen packs) → **03 Record** (two source chips merge into one record; churn folded) → **04 Seal** (a chain of day blocks, today's stamped; RFC 3161 anchor, verify offline).
 4. **Interfaces fan-out** — the ledger → MCP clients · web app · REST API and signed webhooks · share links · evidence packs and the period report (delivered) + SIEM and compliance platform (later).
 5. **Under the hood** — 6 credibility cards: Sealed, Read-only, Deterministic, Named, Isolated, Audited.
-6. **Roadmap** — NOW to late 2027 (connect, collect, remember) → NEXT 2028 (evidence) → THEN 2029 (into your compliance tools) → LATER when funded (enterprise extras); footnote that dates are targets and the stable core stays fixed.
+6. **Roadmap** — NOW to late 2027 (connect, collect, remember) → NEXT 2028 (evidence) → THEN 2029 (into your compliance tools) → LATER if funded (SCIM, provider view, UK residency, seven-year retention); footnote that dates are targets and the stable core stays fixed.
 7. **Footer** — brand + "in build"; the four posture badges; copyright; `mailto:` for design-partner conversations.
 
 ---
