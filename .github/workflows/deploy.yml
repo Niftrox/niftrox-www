@@ -24,7 +24,9 @@ jobs:
       - name: Build with Astro
         uses: withastro/action@v6
         with:
-          node-version: 22
+          # Astro's Node floor moves with Node security releases (7.4.2 requires >=22.23.4) and
+          # setup-node serves whatever 22.x the runner has cached, so track the active LTS line.
+          node-version: 24
 
   deploy:
     needs: build
