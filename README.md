@@ -27,7 +27,8 @@ Fonts are self-hosted (`@fontsource`). All motion respects `prefers-reduced-moti
 ## Deploy
 
 Push to `main` → `.github/workflows/deploy.yml` builds with `withastro/action` and
-deploys to GitHub Pages. Custom domain `niftrox.com` is set via `public/CNAME`;
+deploys to GitHub Pages. Pull requests run the same `build` job without deploying,
+so a broken build fails on the PR. Custom domain `niftrox.com` is set via `public/CNAME`;
 the apex `A` records and the `www` `CNAME` live in Cloudflare DNS, and Pages
 enforces HTTPS.
 
